@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Electric.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
+
     /*
-         * Electric vehicle
-         */
+     * Electric vehicle
+     */
     public class Electric : Engine
     {
         public float MaxBatteryTime { get; private set; }
 
         private float m_TimeLeftOnBattery;
-
-        public float Energy { get; set; }
 
         public Electric(float i_TimeLeftOnBattery, float i_MaxBatteryTime)
         {
@@ -36,6 +35,7 @@ namespace Ex03.GarageLogic
                 if (newTimeLeftOnBattery <= MaxBatteryTime)
                 {
                     this.m_TimeLeftOnBattery += value;
+                    EnergyLevel = m_TimeLeftOnBattery / MaxBatteryTime;
                 }
             }
         }

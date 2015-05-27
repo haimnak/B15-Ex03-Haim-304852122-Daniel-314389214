@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Car.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
@@ -22,18 +22,19 @@ namespace Ex03.GarageLogic
         Five
     }
 
-    public class Car : Vehicle
+    public abstract class Car : Vehicle
     {
         /*
          * Constructs a vehicle
          */
-        public Car(string i_LicenseID, string i_Model)
+        protected Car(eNumOfDoors i_NumOfDoors, eColor i_Color)
         {
-
+            NumOfDoors = i_NumOfDoors;
+            Color = i_Color;
         }
 
-        public eNumOfDoors NumOfDoors { get; protected set; }
+        public eNumOfDoors NumOfDoors { get; private set; }
 
-        public eColor Color { get; protected set; }
+        public eColor Color { get; private set; }
     }
 }
