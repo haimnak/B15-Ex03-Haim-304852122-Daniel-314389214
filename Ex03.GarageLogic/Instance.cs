@@ -48,9 +48,25 @@ namespace Ex03.GarageLogic
             throw new System.NotImplementedException();
         }
 
-        public static Vehicle CreateVehicle(eVehicleType vehicleType, string vehicleModel, string licenseId, float energy, List<Tire> tiers, Engine engine, Dictionary<string, object> details)
+        public static Vehicle CreateVehicle(
+            eVehicleType vehicleType,
+            string vehicleModel, string licenseId, float energy, List<Tire> tiers, Engine engine, Dictionary<string, object> details)
         {
-            throw new NotImplementedException();
+            eVehicleType vehicleType = (eVehicleType)i_VehicleDetails["VehicleType"];
+
+            switch (vehicleType)
+            {
+                case eVehicleType.ElectricCar:
+                    break;
+                case eVehicleType.ElectricMotorcycle:
+                    break;
+                case eVehicleType.GasCar:
+                    break;
+                case eVehicleType.GasMotorcycle:
+                    break;
+                case eVehicleType.Truck:
+                    break;
+            }
         }
     }
 }
