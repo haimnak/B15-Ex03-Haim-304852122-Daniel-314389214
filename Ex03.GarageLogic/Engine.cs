@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Engine.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace Ex03.GarageLogic
+namespace Ex03.GarageLogic.Components
 {
-    public class Engine
+    public abstract class Engine
     {
         public float EnergyLevel { get; protected set; }
     }

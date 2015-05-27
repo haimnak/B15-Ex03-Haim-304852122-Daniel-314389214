@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Vehicle.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
-    public enum eVehicleType
-    {
-        ElectricCar = 1,
-        GasCar = 2,
-        ElectricMotorcycle = 3,
-        GasMotorcycle = 4,
-        Truck = 5,
-        Exit = 0
-    }
+    using System.Collections.Generic;
+
     /*
-       * Vehicle class which contains global vehicle traits and methods
-       */
-    public class Vehicle
+     * Vehicle class which contains global vehicle traits and methods
+     */
+    public abstract class Vehicle
     {
         public string LicenseID { get; private set; }
 
         public string Model { get; private set; }
 
-        public float EnergyPercentage { get; set; }
+        public List<Tire> Tires { get; protected set; }
 
-        public List<Tire> Tires { get; set; }
-
-        public Engine Engine { get; set; }
+        public Engine Engine { get; protected set; }
 
         public override string ToString()
         {

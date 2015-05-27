@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ElectricCar.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
     public class ElectricCar : Car
     {
-        public Electric Engine { get; private set; }
-
-        public ElectricCar(string i_LicenseID, string i_Model, Electric i_Engine)
-            : base(i_LicenseID, i_Model)
+        public ElectricCar(eNumOfDoors i_NumOfDoors, eColor i_Color)
+            : base(i_NumOfDoors, i_Color)
         {
-            Engine = i_Engine;
-
         }
     }
 }

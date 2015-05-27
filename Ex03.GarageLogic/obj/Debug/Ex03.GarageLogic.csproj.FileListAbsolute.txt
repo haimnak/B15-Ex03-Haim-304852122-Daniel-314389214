@@ -4,3 +4,9 @@ D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageLogic\bin\Debug\Ex0
 D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.pdb
 D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.dll
 D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.pdb
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.dll.config
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.dll
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.pdb
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.dll
+C:\Users\Daniel\Documents\v2.B15-Ex03-Haim-304852122-Daniel-314389214\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.pdb

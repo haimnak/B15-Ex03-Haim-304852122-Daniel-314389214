@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Fuel.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
+
     public enum eFuelType
     {
         Solar,
@@ -17,7 +18,7 @@ namespace Ex03.GarageLogic
     /*
      * Fuel vehicle
      */
-    public class Fuel
+    public class Fuel : Engine
     {
         public float MaxLiters { get; private set; }
 
@@ -28,6 +29,7 @@ namespace Ex03.GarageLogic
         public Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
         {
             this.m_CurLitersInTank = i_CurLitersInTank;
+            EnergyLevel = m_CurLitersInTank / MaxLiters;
             MaxLiters = i_MaxLiters;
             FuelType = i_FuelType;
         }
@@ -42,7 +44,9 @@ namespace Ex03.GarageLogic
             if (newFuelAmount <= MaxLiters && i_FuelType == FuelType)
             {
                 m_CurLitersInTank += i_FuelAmount;
+                EnergyLevel = m_CurLitersInTank / MaxLiters;
             }
+            // TODO: add exception
         }
     }
 }
