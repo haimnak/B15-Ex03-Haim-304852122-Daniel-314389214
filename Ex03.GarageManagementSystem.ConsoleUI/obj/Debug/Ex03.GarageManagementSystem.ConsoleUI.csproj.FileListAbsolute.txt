@@ -1,0 +1,8 @@
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\bin\Debug\Ex03.GarageManagementSystem.ConsoleUI.exe.config
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\obj\Debug\Ex03.GarageManagementSystem.ConsoleUI.csprojResolveAssemblyReference.cache
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\bin\Debug\Ex03.GarageManagementSystem.ConsoleUI.exe
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\bin\Debug\Ex03.GarageManagementSystem.ConsoleUI.pdb
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\bin\Debug\Ex03.GarageLogic.dll
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\bin\Debug\Ex03.GarageLogic.pdb
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\obj\Debug\Ex03.GarageManagementSystem.ConsoleUI.exe
+D:\cs\C#\B15 Ex03 Haim 304852122 Daniel 314389214\Ex03.GarageManagementSystem.ConsoleUI\obj\Debug\Ex03.GarageManagementSystem.ConsoleUI.pdb
