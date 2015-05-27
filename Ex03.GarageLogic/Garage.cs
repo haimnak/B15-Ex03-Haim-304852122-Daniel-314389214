@@ -41,9 +41,9 @@ namespace Ex03.GarageLogic
             return inGarage;
         }
 
-        public bool getData(string licenseId)
+        public string getData(string licenseId)
         {
-            
+            return String.Format("Owner Name: {0}, Number: {1}");
         }
 
 
