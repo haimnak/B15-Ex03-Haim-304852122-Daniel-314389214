@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Ex03.GarageLogic.Components
+namespace Ex03.GarageLogic
 {
     public abstract class Engine
     {

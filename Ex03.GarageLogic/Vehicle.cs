@@ -8,6 +8,14 @@ namespace Ex03.GarageLogic
 {
     using System.Collections.Generic;
 
+    public enum eVehicleType
+    {
+         ElectricCar = 1,
+         GasCar = 2, 
+         ElectricMotorcycle = 3,
+         GasMotorcycle = 4,
+         Truck = 5
+    }
     /*
      * Vehicle class which contains global vehicle traits and methods
      */
@@ -23,7 +31,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format("LicenseID: {0}, Model: {1}, EnergyPercentage: {2}, Tires: {3}", this.LicenseID, this.Model, this.EnergyPercentage, this.Tires);
+            return string.Format("LicenseID: {0}, Model: {1}, Tires: {2}", this.LicenseID, this.Model, this.Tires);
         }
     }
 }
