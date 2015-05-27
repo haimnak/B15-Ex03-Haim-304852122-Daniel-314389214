@@ -201,7 +201,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             }
             else
             {
-                List<string> licensesID = m_Garage.licensesID;
+                List<string> licensesID = m_Garage.garageCars;
                 printList(licensesID);
             }
         }

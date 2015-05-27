@@ -25,7 +25,7 @@ namespace Ex03.GarageLogic
      */
     public class Garage
     {
-        public List<string> licensesID;
+        public List<string> garageCars = new List<string>();
         // Check if the vehicle is already in the garage acccording to license plate
         // **Do I check here, or do I check outside and then insert?
         // public VehicleArrival(enum type,string license)
@@ -36,12 +36,14 @@ namespace Ex03.GarageLogic
 
         public bool thisCarInTheGarage(string licenseId)
         {
-            return true;
+            bool inGarage = garageCars.Contains(licenseId);
+               
+            return inGarage;
         }
 
         public bool getData(string licenseId)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void refuelVehicle(string licenseId, eFuelType fuelType, float amount)
