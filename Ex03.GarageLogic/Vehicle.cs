@@ -19,8 +19,11 @@ namespace Ex03.GarageLogic
     /*
      * Vehicle class which contains global vehicle traits and methods
      */
+
     public abstract class Vehicle
     {
+        public float currentEnergy { get; private set; }
+
         public string LicenseID { get; private set; }
 
         public string Model { get; private set; }

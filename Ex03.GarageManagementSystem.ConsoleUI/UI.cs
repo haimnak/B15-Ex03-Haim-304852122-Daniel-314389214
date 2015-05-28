@@ -201,8 +201,15 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             }
             else
             {
-                List<string> licensesID = m_Garage.garageCars;
-                printList(licensesID);
+                List<string> licensesIDUnderRepair;
+                licensesIDUnderRepair = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.UnderRepair);
+                List<string> licensesIDRepaired = null;
+                licensesIDUnderRepair = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.Repaired);
+                List<string> licensesIDPaid = null;
+                licensesIDUnderRepair = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.Paid);
+                printList(licensesIDUnderRepair);
+                printList(licensesIDRepaired);
+                printList(licensesIDPaid);
             }
         }
 
@@ -324,7 +331,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         break;
                 }
 
-                // class Engine?
+                
                 Vehicle vehicle = Instance.CreateVehicle(
                     vehicleType,
                     vehicleModel,

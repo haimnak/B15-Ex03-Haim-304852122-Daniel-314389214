@@ -47,7 +47,7 @@ namespace Ex03.GarageLogic
         {
             throw new System.NotImplementedException();
         }
-
+        /*
         public static Vehicle CreateVehicle(
             eVehicleType i_VehicleType,
             string i_VehicleModel,
@@ -72,6 +72,7 @@ namespace Ex03.GarageLogic
                 case eVehicleType.Truck:
                     break;
             }
+         */ 
         }
     }
-}
+
