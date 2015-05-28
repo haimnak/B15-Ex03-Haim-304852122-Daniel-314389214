@@ -38,6 +38,24 @@ namespace Ex03.GarageLogic
             Fuel.FuelUp(eFuelType.Solar, i_FuelAmount);
         }
 
+        public override int NumOfTires
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
 
+        public override float MaxTirePressure
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public override List<Tire> Tires { get; protected set; }
+
+        public override Engine Engine { get; protected set; }
     }
 }

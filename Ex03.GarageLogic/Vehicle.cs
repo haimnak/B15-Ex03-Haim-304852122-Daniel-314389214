@@ -22,15 +22,17 @@ namespace Ex03.GarageLogic
 
     public abstract class Vehicle
     {
-        public float currentEnergy { get; private set; }
+        public string LicenseID { get; set; }
 
-        public string LicenseID { get; private set; }
+        public string Model { get; set; }
 
-        public string Model { get; private set; }
+        public abstract int NumOfTires { get; }
 
-        public List<Tire> Tires { get; protected set; }
+        public abstract float MaxTirePressure { get; }
 
-        public Engine Engine { get; protected set; }
+        public abstract List<Tire> Tires { get; protected set; }
+
+        public abstract Engine Engine { get; protected set; }
 
         public override string ToString()
         {

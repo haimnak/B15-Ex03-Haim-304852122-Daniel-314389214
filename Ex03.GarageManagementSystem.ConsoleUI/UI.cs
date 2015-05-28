@@ -258,13 +258,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                 float energy = View.NumberScan("Insert energy level:");
 
                 string tireManufacturer = View.GeneralScan("Tire Manufacturer:");
-                float tireMaxPressure = View.NumberScan("Tire Max Air Pressure:");
-
-                // TODO: Instance.CreateTires method
-                List<Tire> tiers = Instance.CreateTires(vehicleType, tireManufacturer, tireMaxPressure);
-
-                // TODO: Instance.CreateEngine method
-                Engine engine = Instance.CreateEngine(vehicleType, energy);
+//                float tireMaxPressure = View.NumberScan("Tire Max Air Pressure:");
 
                 Dictionary<string, object> details = new Dictionary<string, object>();
 
@@ -296,17 +290,17 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         details.Add("licenseType", licenseType);
 
                         // TODO: add NumberScan int Type in View class
-                        float engineCapacity = View.NumberScan("Insert engine Capacity:");
-                        if (engineCapacity != Math.Floor((engineCapacity)))
-                        {
-                            System.Console.WriteLine("invalid input");
-                            View.NumberScan("Insert engine Capacity:");
-                        }
-                        else
-                        {
-                            details.Add("engineCapacity", engineCapacity);
-                            break;
-                        }
+//                        float engineCapacity = View.NumberScan("Insert engine Capacity:");
+//                        if (engineCapacity != Math.Floor((engineCapacity)))
+//                        {
+//                            System.Console.WriteLine("invalid input");
+//                            View.NumberScan("Insert engine Capacity:");
+//                        }
+//                        else
+//                        {
+//                            details.Add("engineCapacity", engineCapacity);
+//                            break;
+//                        }
                         break;
 
 
@@ -317,6 +311,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 1. Yes
 2. NO", 2);
                         bool dangerousMaterials;
+                        // TODO: Switch to Enum
                         if (choose == 1)
                         {
                             dangerousMaterials = true;
@@ -331,17 +326,15 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         break;
                 }
 
-                
                 Vehicle vehicle = Instance.CreateVehicle(
                     vehicleType,
                     vehicleModel,
                     licenseID,
                     energy,
-                    tiers,
-                    engine,
                     details);
 
                 // upadate status in repair in garage class
+                //TODO: Use OwnerDetails obj here
                 m_Garage.InsertVehicle(ownerName, ownerNumber, vehicle);
                 Console.WriteLine("The new vehicle was added to the garage");
             }

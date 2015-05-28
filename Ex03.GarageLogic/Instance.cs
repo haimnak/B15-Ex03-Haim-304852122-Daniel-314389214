@@ -11,57 +11,35 @@ namespace Ex03.GarageLogic
     /*
      * Creates object instances
      */
+
     public class Instance
     {
-        /*
-        public Vehicle CreateVehicle(Dictionary<string, object> i_VehicleDetails)
+
+        public OwnerDetails Owner(string i_OwnerName, string i_OwnerNumber)
         {
-            //ownerInstance(i_VehicleDetails);
-            //tiresInstance(i_VehicleDetails);
-
-            eVehicleType vehicleType = (eVehicleType)i_VehicleDetails["VehicleType"];
-
-            switch (vehicleType)
-            {
-                case eVehicleType.ElectricCar:
-                    break;
-                case eVehicleType.ElectricMotorcycle:
-                    break;
-                case eVehicleType.GasCar:
-                    break;
-                case eVehicleType.GasMotorcycle:
-                    break;
-                case eVehicleType.Truck:
-                    break;
-            }
-
-            //parentInstance(i_VehicleDetails);
-        }
-        */
-        public static Engine CreateEngine(eVehicleType vehicleType, float energy)
-        {
-            throw new System.NotImplementedException();
+            return new OwnerDetails(i_OwnerName, i_OwnerNumber);
         }
 
-        public static List<Tire> CreateTires(eVehicleType vehicleType, string tireManufacturer, float tireMaxPressure)
-        {
-            throw new System.NotImplementedException();
-        }
-        /*
         public static Vehicle CreateVehicle(
             eVehicleType i_VehicleType,
             string i_VehicleModel,
             string i_LicenseID,
             float i_Energy,
-            List<Tire> i_Tires,
-            Engine i_Engine,
             Dictionary<string, object> i_VehicleDetails)
         {
+            Vehicle vehicle = null;
             eVehicleType vehicleType = i_VehicleType;
 
             switch (i_VehicleType)
             {
                 case eVehicleType.ElectricCar:
+                    vehicle = new ElectricCar(
+                        //TODO: Fix parameters here compared to input
+                        (eNumOfDoors)i_VehicleDetails["doors"],
+                        (eColor)i_VehicleDetails["Color"],
+                        i_Energy,
+                        (string)i_VehicleDetails["TireManufacturer"],
+                        (float)i_VehicleDetails["TireAirPressure"]);
                     break;
                 case eVehicleType.ElectricMotorcycle:
                     break;
@@ -72,7 +50,16 @@ namespace Ex03.GarageLogic
                 case eVehicleType.Truck:
                     break;
             }
-         */ 
+
+            // Set general vehicle properties
+            if (vehicle != null)
+            {
+                vehicle.LicenseID = i_LicenseID;
+                vehicle.Model = i_VehicleModel;
+            }
+
+            return vehicle;
         }
     }
+}
 
