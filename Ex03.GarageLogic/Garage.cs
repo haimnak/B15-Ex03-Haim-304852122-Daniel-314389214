@@ -25,7 +25,8 @@ namespace Ex03.GarageLogic
      */
     public class Garage
     {
-        public List<string> garageCars = new List<string>();
+        public Dictionary<string, VehicleInGarage> AllCarsInTheGarage = new Dictionary<string, VehicleInGarage>();  
+        
         // Check if the vehicle is already in the garage acccording to license plate
         // **Do I check here, or do I check outside and then insert?
         // public VehicleArrival(enum type,string license)
@@ -34,47 +35,112 @@ namespace Ex03.GarageLogic
         // public List<string> GetValidVehicleTypes()
 
 
-        public bool thisCarInTheGarage(string licenseId)
+        public bool thisCarInTheGarage(string i_licenseId)
         {
-            bool inGarage = garageCars.Contains(licenseId);
+            bool inGarage = AllCarsInTheGarage.ContainsKey(i_licenseId);
                
             return inGarage;
         }
-
-        public string getData(string licenseId)
+        // TODO: add specific details according to the vehicle type
+        public string getData(string i_licenseId)
         {
-            return String.Format("Owner Name: {0}, Number: {1}");
+            if (thisCarInTheGarage(i_licenseId))
+            {
+                VehicleInGarage vehicleInGarage;
+                AllCarsInTheGarage.TryGetValue(i_licenseId, out vehicleInGarage);
+                return vehicleInGarage.ToString();
+            }
+            else
+            {
+                throw new ArgumentException("car not in the garage");
+            }
+            return null;
         }
 
 
         public void refuelVehicle(string licenseId, eFuelType fuelType, float amount)
         {
-            throw new NotImplementedException();
+            if (thisCarInTheGarage(licenseId))
+            {
+                VehicleInGarage vehicleInGarage;
+                AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
+                Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
+                fuelEngine.FuelUp(fuelType, amount);
+
+            }
+            else
+            {
+                throw new ArgumentException("car not in the garage");
+            }
         }
 
         public void rechargeVehicle(string licenseId, float amount)
         {
-            throw new NotImplementedException();
+            if (thisCarInTheGarage(licenseId))
+            {
+                VehicleInGarage vehicleInGarage;
+                AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
+                Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
+                electricEngine.recharge(amount);
+
+            }
+            else
+            {
+                throw new ArgumentException("car not in the garage");
+            }
         }
 
         public void InflateTiresToMax(string licenseId)
         {
-            throw new NotImplementedException();
+            if (thisCarInTheGarage(licenseId))
+            {
+                VehicleInGarage vehicleInGarage;
+                AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
+                // Inflate each tire to maximum
+                for (int i = 0; i < vehicleInGarage.vehicle.Tires.Count; i++)
+                {
+                    vehicleInGarage.vehicle.Tires[i].inflateToMax();
+                }
+
+            }
+            else
+            {
+                throw new ArgumentException("car not in the garage");
+            }
         }
 
         public void updateCarStatus(string licenseId, eVehicleStatuses statusToChange)
         {
-            throw new NotImplementedException();
+            if (thisCarInTheGarage(licenseId))
+            {
+                VehicleInGarage vehicleInGarage;
+                AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
+                vehicleInGarage.status = statusToChange;
+            }
+            else
+            {
+                throw new ArgumentException("car not in the garage");
+            }
         }
 
         public List<string> getLicensesIDInTheGarage(eVehicleStatuses status)
         {
-            throw new NotImplementedException();
+            List<string> licenses = null;
+            foreach (KeyValuePair<string, VehicleInGarage> vehicleInGarage in AllCarsInTheGarage)
+            {
+                if (vehicleInGarage.Value.status == status)
+                {
+                    licenses.Add(vehicleInGarage.Key);
+                }
+            }
+            return licenses;
         }
 
-        public void InsertVehicle(object name, object phoneNumber, Vehicle vehicle)
+        public void InsertVehicle(string name, string phoneNumber, Vehicle i_vehicle)
         {
-            throw new NotImplementedException();
+            OwnerDetails owner = new OwnerDetails(name, phoneNumber);
+            VehicleInGarage vehicle = new  VehicleInGarage(i_vehicle, owner, eVehicleStatuses.UnderRepair);
+            AllCarsInTheGarage.Add(i_vehicle.LicenseID,vehicle);
         }
     }
 }

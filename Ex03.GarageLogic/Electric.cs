@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace Ex03.GarageLogic
 {
 
@@ -41,5 +43,16 @@ namespace Ex03.GarageLogic
         }
 
 
+        public void recharge(float amount)
+        {
+            if ((m_TimeLeftOnBattery + amount) > MaxBatteryTime)
+            {
+                throw new ArgumentOutOfRangeException("over the max");
+            }
+            else
+            {
+                TimeLeftOnBattery += amount;
+            }
+        }
     }
 }

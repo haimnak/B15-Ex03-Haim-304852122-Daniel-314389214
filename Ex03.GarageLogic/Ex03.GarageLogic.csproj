@@ -62,6 +62,7 @@
     <Compile Include="Tire.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleInGarage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

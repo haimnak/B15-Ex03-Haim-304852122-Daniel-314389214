@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
-{
+{/*
     public class GasCar : Car
     {
         public Fuel Engine { get; private set; }
@@ -16,4 +16,5 @@ namespace Ex03.GarageLogic
             Engine = i_Engine;
         }
     }
+  */
 }
