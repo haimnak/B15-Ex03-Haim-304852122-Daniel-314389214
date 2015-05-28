@@ -49,12 +49,17 @@ namespace Ex03.GarageLogic
         }
 
         public static Vehicle CreateVehicle(
-            eVehicleType vehicleType,
-            string vehicleModel, string licenseId, float energy, List<Tire> tiers, Engine engine, Dictionary<string, object> details)
+            eVehicleType i_VehicleType,
+            string i_VehicleModel,
+            string i_LicenseID,
+            float i_Energy,
+            List<Tire> i_Tires,
+            Engine i_Engine,
+            Dictionary<string, object> i_VehicleDetails)
         {
-            eVehicleType vehicleType = (eVehicleType)i_VehicleDetails["VehicleType"];
+            eVehicleType vehicleType = i_VehicleType;
 
-            switch (vehicleType)
+            switch (i_VehicleType)
             {
                 case eVehicleType.ElectricCar:
                     break;
