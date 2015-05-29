@@ -12,11 +12,11 @@ namespace Ex03.GarageLogic
     [Flags]
     public enum eVehicleStatuses
     {
-        UnderRepair,
+        UnderRepair = 1,
 
-        Repaired,
+        Repaired = 2,
 
-        Paid
+        Paid = 3
     }
 
     /*
@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(i_licenseId, out vehicleInGarage);
-                return vehicleInGarage.ToString();
+                if (vehicleInGarage != null) return vehicleInGarage.ToString();
             }
             else
             {
@@ -125,7 +125,7 @@ namespace Ex03.GarageLogic
 
         public List<string> getLicensesIDInTheGarage(eVehicleStatuses status)
         {
-            List<string> licenses = null;
+            List<string> licenses = new List<string>();
             foreach (KeyValuePair<string, VehicleInGarage> vehicleInGarage in AllCarsInTheGarage)
             {
                 if (vehicleInGarage.Value.status == status)

@@ -54,7 +54,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             {
                 PrintInvalidInput(k_InvalidInputMsg);
                 Console.WriteLine(i_ScanMsg);
-                userInput = Console.ReadKey().KeyChar.ToString();
+                userInput = Console.ReadLine();
                 validNum = float.TryParse(userInput, out userNumber);
                 Console.Clear();
             }
