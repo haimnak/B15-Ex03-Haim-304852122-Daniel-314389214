@@ -16,6 +16,9 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class GasCar : Car
     {
+
+        private readonly Fuel m_Fuel;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GasCar"/> class.
         /// </summary>
@@ -34,43 +37,24 @@ namespace Ex03.GarageLogic
         /// <param name="i_TireAirPressure">
         /// The i_ tire air pressure.
         /// </param>
-        public GasCar(eNumOfDoors i_NumOfDoors, eColor i_Color, float i_CurFuel, string i_TireManufacturer, float i_TireAirPressure)
+        public GasCar(
+            eNumOfDoors i_NumOfDoors,
+            eColor i_Color,
+            float i_CurFuel,
+            string i_TireManufacturer,
+            float i_TireAirPressure)
             : base(i_NumOfDoors, i_Color)
         {
-            this.CurFuel = i_CurFuel;
-            this.Engine = new Fuel(this.CurFuel, this.MaxFuel, this.FuelType);
-
+            this.Engine = new Fuel(i_CurFuel, 35, eFuelType.Octan96);
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
             for (int i = 0; i < this.NumOfTires; i++)
             {
-                Tire tire = new Tire(this.MaxTirePressure, i_TireManufacturer, i_TireAirPressure);
+                Tire tire = new Tire(31, i_TireManufacturer, i_TireAirPressure);
                 tireList.Add(tire);
             }
 
             this.Tires = tireList;
-        }
-
-        /// <summary>
-        /// Gets the num of tires.
-        /// </summary>
-        public override sealed int NumOfTires
-        {
-            get
-            {
-                return 4;
-            }
-        }
-
-        /// <summary>
-        /// Gets the max tire pressure.
-        /// </summary>
-        public override sealed float MaxTirePressure
-        {
-            get
-            {
-                return 31;
-            }
         }
 
         /// <summary>
@@ -80,7 +64,7 @@ namespace Ex03.GarageLogic
         { 
             get
             {
-                return 35;
+                return m_Fuel.MaxLiters;
             }
         }
 
@@ -91,13 +75,24 @@ namespace Ex03.GarageLogic
         {
             get
             {
-                return eFuelType.Octan96;
+                return m_Fuel.FuelType;
             }
         }
 
         /// <summary>
         /// Gets or sets the cur fuel.
         /// </summary>
-        public float CurFuel { get; set; }
+        public float CurFuel
+        {
+            get
+            {
+                return m_Fuel.CurLiters;
+            }
+
+            set
+            {
+               m_Fuel.FuelUp(FuelType, value); 
+            }
+        }
     }
 }

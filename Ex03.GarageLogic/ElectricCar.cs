@@ -13,7 +13,12 @@ namespace Ex03.GarageLogic
     {
         private readonly Electric m_Electric;
 
-        public ElectricCar(eNumOfDoors i_NumOfDoors, eColor i_Color, float i_BatteryCharge, string i_TireManufacturer, float i_TireAirPressure)
+        public ElectricCar(
+            eNumOfDoors i_NumOfDoors,
+            eColor i_Color,
+            float i_BatteryCharge,
+            string i_TireManufacturer,
+            float i_TireAirPressure)
             : base(i_NumOfDoors, i_Color)
         {
             this.MaxTirePressure = 31;

@@ -15,9 +15,9 @@ namespace Ex03.GarageLogic
     {
         private float m_Charge = 0;
 
-        public Electric(float i_MCharge, float i_MaxBatteryTime)
+        public Electric(float i_Charge, float i_MaxBatteryTime)
         {
-            this.Charge = i_MCharge;
+            this.Charge = i_Charge;
             this.MaxBatteryTime = i_MaxBatteryTime;
         }
 

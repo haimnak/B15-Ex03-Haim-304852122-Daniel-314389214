@@ -20,9 +20,11 @@ namespace Ex03.GarageLogic
      */
     public class Fuel : Engine
     {
+        private float m_CurLitersInTank = 0;
+
         public Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
         {
-            this.m_CurLitersInTank = i_CurLitersInTank;
+            FuelUp(i_FuelType, i_CurLitersInTank);
             EnergyLevel = m_CurLitersInTank / MaxLiters;
             MaxLiters = i_MaxLiters;
             FuelType = i_FuelType;
@@ -32,7 +34,13 @@ namespace Ex03.GarageLogic
 
         public eFuelType FuelType { get; private set; }
 
-        private float m_CurLitersInTank;
+        public float CurLiters
+        { 
+            get
+            {
+                return m_CurLitersInTank;
+            }
+        }
 
         /*
          * Add fuel to vehicle if the type and amount are valid
@@ -47,6 +55,11 @@ namespace Ex03.GarageLogic
                 EnergyLevel = m_CurLitersInTank / MaxLiters;
             }
             // TODO: add exception
+        }
+
+        public void FullTank()
+        {
+            m_CurLitersInTank = MaxLiters;
         }
     }
 }
