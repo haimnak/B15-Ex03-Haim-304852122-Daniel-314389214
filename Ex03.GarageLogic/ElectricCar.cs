@@ -75,8 +75,6 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public override sealed List<Tire> Tires { get; protected set; }
-
         public void ChargeToMax()
         {
             if (this.m_Electric != null)

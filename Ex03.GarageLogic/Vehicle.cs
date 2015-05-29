@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic
 
         public abstract float MaxTirePressure { get; }
 
-        public abstract List<Tire> Tires { get; protected set; }
+        public List<Tire> Tires { get; protected set; }
 
         public Engine Engine { get; protected set; }
 

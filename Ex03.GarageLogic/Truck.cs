@@ -44,9 +44,5 @@ namespace Ex03.GarageLogic
                 throw new NotImplementedException();
             }
         }
-
-        public override List<Tire> Tires { get; protected set; }
-
-        public override Engine Engine { get; protected set; }
     }
 }
