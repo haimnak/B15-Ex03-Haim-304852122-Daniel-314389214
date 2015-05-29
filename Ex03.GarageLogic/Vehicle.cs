@@ -4,6 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Text;
+
 namespace Ex03.GarageLogic
 {
     using System.Collections.Generic;
@@ -36,7 +38,19 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format("LicenseID: {0}, Model: {1}, Tires: {2}", this.LicenseID, this.Model, this.Tires);
+            return string.Format("LicenseID: {0},\n Model: {1},\n  Tires: {2}", this.LicenseID, this.Model, tiresDetails(Tires));
         }
+
+        public StringBuilder tiresDetails(List<Tire> tires)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < tires.Count; i++)
+            {
+                sb.Append(tires[i].ToString());
+            }
+            return sb;
+        }
+
+        public object currentEnergy { get; set; }
     }
 }

@@ -20,13 +20,10 @@ namespace Ex03.GarageLogic
         }
 
 
-//        public override string ToString()
-//        {
-//            return string.Format("LicenseID: {0},Model Type: {1},Owner name: {2},Status in the garage: {3}," +
-//                                 "Tires details: {4}, Current energy: {5}, Gas type: {6}",this.vehicle.LicenseID,
-//                                 this.vehicle.Model, this.owner.Name, this.status, tiresDetails(this.vehicle.Tires), this.vehicle.Tires, this.vehicle.currentEnergy,
-//                                 this.vehicle.Engine);
-//        }
+        public override string ToString()
+        {
+            return string.Format(vehicle.ToString());
+       }
 
         public StringBuilder tiresDetails(List<Tire> tires)
         {
