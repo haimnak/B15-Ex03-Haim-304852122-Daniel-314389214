@@ -28,9 +28,9 @@ namespace Ex03.GarageLogic
 
         public string Model { get; set; }
 
-        public abstract int NumOfTires { get; }
+        public int NumOfTires { get; protected set; }
 
-        public abstract float MaxTirePressure { get; }
+        public float MaxTirePressure { get; protected set; }
 
         public List<Tire> Tires { get; protected set; }
 

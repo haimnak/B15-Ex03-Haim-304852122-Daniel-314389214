@@ -4,55 +4,50 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
 namespace Ex03.GarageLogic
 {
+    using System;
 
     /*
      * Electric vehicle
      */
     public class Electric : Engine
     {
-        public float MaxBatteryTime { get; private set; }
+        private float m_Charge = 0;
 
-        private float m_TimeLeftOnBattery;
-
-        public Electric(float i_TimeLeftOnBattery, float i_MaxBatteryTime)
+        public Electric(float i_MCharge, float i_MaxBatteryTime)
         {
-            this.m_TimeLeftOnBattery = i_TimeLeftOnBattery;
-            MaxBatteryTime = i_MaxBatteryTime;
+            this.Charge = i_MCharge;
+            this.MaxBatteryTime = i_MaxBatteryTime;
         }
 
-        public float TimeLeftOnBattery
+        public float MaxBatteryTime { get; private set; }
+
+        public float Charge
         {
             get
             {
-                return this.m_TimeLeftOnBattery;
+                return this.m_Charge;
             }
 
             set
             {
-                float newTimeLeftOnBattery = m_TimeLeftOnBattery += value;
-                if (newTimeLeftOnBattery <= MaxBatteryTime)
+                float newTimeLeftOnBattery = this.m_Charge += value;
+                if (newTimeLeftOnBattery <= this.MaxBatteryTime)
                 {
-                    this.m_TimeLeftOnBattery += value;
-                    EnergyLevel = m_TimeLeftOnBattery / MaxBatteryTime;
+                    this.m_Charge += value;
+                    this.EnergyLevel = this.m_Charge / this.MaxBatteryTime;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Charge above max");
                 }
             }
         }
 
-
-        public void recharge(float amount)
+        public void ChargeToMax()
         {
-            if ((m_TimeLeftOnBattery + amount) > MaxBatteryTime)
-            {
-                throw new ArgumentOutOfRangeException("over the max");
-            }
-            else
-            {
-                TimeLeftOnBattery += amount;
-            }
+            m_Charge = MaxBatteryTime;
         }
     }
 }

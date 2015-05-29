@@ -20,12 +20,6 @@ namespace Ex03.GarageLogic
      */
     public class Fuel : Engine
     {
-        public float MaxLiters { get; private set; }
-
-        public eFuelType FuelType { get; private set; }
-
-        private float m_CurLitersInTank;
-
         public Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
         {
             this.m_CurLitersInTank = i_CurLitersInTank;
@@ -33,6 +27,12 @@ namespace Ex03.GarageLogic
             MaxLiters = i_MaxLiters;
             FuelType = i_FuelType;
         }
+
+        public float MaxLiters { get; private set; }
+
+        public eFuelType FuelType { get; private set; }
+
+        private float m_CurLitersInTank;
 
         /*
          * Add fuel to vehicle if the type and amount are valid

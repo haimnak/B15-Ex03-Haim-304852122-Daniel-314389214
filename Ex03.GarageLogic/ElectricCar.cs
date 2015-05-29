@@ -11,13 +11,16 @@ namespace Ex03.GarageLogic
 
     public class ElectricCar : Car
     {
-        private Electric m_Electric;
+        private readonly Electric m_Electric;
 
         public ElectricCar(eNumOfDoors i_NumOfDoors, eColor i_Color, float i_BatteryCharge, string i_TireManufacturer, float i_TireAirPressure)
             : base(i_NumOfDoors, i_Color)
         {
-            this.m_Electric = new Electric(i_BatteryCharge, this.MaxBatteryCharge);
+            this.MaxTirePressure = 31;
+            this.NumOfTires = 4;
+            this.m_Electric = new Electric(i_BatteryCharge, 2.2f);
             this.Engine = this.m_Electric;
+
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
             for (int i = 0; i < this.NumOfTires; i++)
@@ -33,23 +36,7 @@ namespace Ex03.GarageLogic
         {
             get
             {
-                return 2.2f;
-            }
-        }
-
-        public override sealed int NumOfTires
-        {
-            get
-            {
-                return 4;
-            }
-        }
-
-        public override sealed float MaxTirePressure
-        {
-            get
-            {
-                return 31;
+                return this.m_Electric.MaxBatteryTime;
             }
         }
 
@@ -57,20 +44,14 @@ namespace Ex03.GarageLogic
         {
             get
             {
-                return this.m_Electric != null ? this.m_Electric.TimeLeftOnBattery : 0;
+                return this.m_Electric != null ? this.m_Electric.Charge : 0;
             }
 
             set
             {
                 if (this.m_Electric != null)
                 {
-                    float newCharge = this.Charge + value;
-
-                    if (newCharge <= this.MaxBatteryCharge)
-                    {
-                        this.Charge += value;
-                        this.Energy = this.Charge / this.MaxBatteryCharge;
-                    }
+                    this.m_Electric.Charge = value;
                 }
             }
         }
@@ -79,7 +60,7 @@ namespace Ex03.GarageLogic
         {
             if (this.m_Electric != null)
             {
-                this.m_Electric.TimeLeftOnBattery = this.MaxBatteryCharge;
+                this.m_Electric.ChargeToMax();
             }
         }
     }
