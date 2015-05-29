@@ -34,7 +34,7 @@ namespace Ex03.GarageLogic
 
         public abstract List<Tire> Tires { get; protected set; }
 
-        public abstract Engine Engine { get; protected set; }
+        public Engine Engine { get; protected set; }
 
         public override string ToString()
         {
