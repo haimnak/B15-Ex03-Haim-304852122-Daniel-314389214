@@ -8,8 +8,6 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
     {
-        private const int k_NumOfWheels = 16;
-
         private readonly bool r_DangerousMaterials;
 
         private readonly float r_CurrentCarryingWeight;
@@ -21,13 +19,6 @@ namespace Ex03.GarageLogic
         {
             this.r_DangerousMaterials = i_DangerousMaterials;
             this.r_CurrentCarryingWeight = i_CurrentCarryingWeight;
-        }
-
-        // TODO
-        public Truck(string i_VehicleType, string i_LicenseId, float i_EnergyPercentage, List<Tire> i_Tires, bool r_DangerousMaterials, float r_CurrentCarryingWeight, Fuel m_Fuel)
-        {
-            this.r_DangerousMaterials = r_DangerousMaterials;
-            this.r_CurrentCarryingWeight = r_CurrentCarryingWeight;
         }
 
         /*

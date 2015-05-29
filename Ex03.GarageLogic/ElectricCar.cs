@@ -7,14 +7,17 @@
 namespace Ex03.GarageLogic
 {
     using System.Collections.Generic;
+    
 
     public class ElectricCar : Car
     {
+        private Electric m_Electric;
+
         public ElectricCar(eNumOfDoors i_NumOfDoors, eColor i_Color, float i_BatteryCharge, string i_TireManufacturer, float i_TireAirPressure)
             : base(i_NumOfDoors, i_Color)
         {
-            Engine = new Electric(i_BatteryCharge, this.MaxBatteryCharge);
-
+            this.m_Electric = new Electric(i_BatteryCharge, this.MaxBatteryCharge);
+            this.Engine = this.m_Electric;
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
             for (int i = 0; i < this.NumOfTires; i++)
@@ -50,8 +53,37 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public float Charge
+        {
+            get
+            {
+                return this.m_Electric != null ? this.m_Electric.TimeLeftOnBattery : 0;
+            }
+
+            set
+            {
+                if (this.m_Electric != null)
+                {
+                    float curCharge = this.m_Electric.TimeLeftOnBattery;
+                    float newCharge = curCharge + value;
+
+                    if (newCharge <= this.MaxBatteryCharge)
+                    {
+                        this.m_Electric.TimeLeftOnBattery += value;
+                    }
+                }
+            }
+        }
+
         public override sealed List<Tire> Tires { get; protected set; }
 
-        public override sealed Engine Engine { get; protected set; }
+        public void ChargeToMax()
+        {
+            if (this.m_Electric != null)
+            {
+                this.m_Electric.TimeLeftOnBattery = this.MaxBatteryCharge;
+            }
+        }
     }
 }
+
