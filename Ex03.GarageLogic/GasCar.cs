@@ -88,11 +88,11 @@ namespace Ex03.GarageLogic
             {
                 return m_Fuel.CurLiters;
             }
+        }
 
-            set
-            {
-               m_Fuel.FuelUp(FuelType, value); 
-            }
+        public void FuelUp(eFuelType i_FuelType, float i_FuelAmount)
+        {
+            m_Fuel.FuelUp(i_FuelType, i_FuelAmount); 
         }
     }
 }

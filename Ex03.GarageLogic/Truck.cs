@@ -8,41 +8,57 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
     {
-        private readonly bool r_DangerousMaterials;
+        private readonly Fuel m_Fuel;
 
-        private readonly float r_CurrentCarryingWeight;
-
-        public Fuel Fuel { get; set; }
-
-        protected Truck(bool i_DangerousMaterials, float i_CurrentCarryingWeight, float i_CurLitersInTank)
-            : base()
+        public Truck(
+            bool i_DangerousMaterials,
+            float i_CurrentCarryingWeight,
+            float i_CurLitersInTank,
+            string i_TireManufacturer,
+            float i_TireAirPressure)
         {
-            this.r_DangerousMaterials = i_DangerousMaterials;
-            this.r_CurrentCarryingWeight = i_CurrentCarryingWeight;
+            DangerousMaterials = i_DangerousMaterials;
+            CurrentCarryingWeight = i_CurrentCarryingWeight;
+            NumOfTires = 16;
+
+            this.Engine = new Fuel(i_CurLitersInTank, 170, eFuelType.Solar);
+            List<Tire> tireList = new List<Tire>(this.NumOfTires);
+
+            for (int i = 0; i < this.NumOfTires; i++)
+            {
+                Tire tire = new Tire(31, i_TireManufacturer, i_TireAirPressure);
+                tireList.Add(tire);
+            }
+
+            this.Tires = tireList;
+        }
+
+        public float CurrentCarryingWeight { get; set; }
+
+        public bool DangerousMaterials { get; private set; }
+
+        public float MaxFuel
+        {
+            get
+            {
+                return m_Fuel.MaxLiters;
+            } 
+        }
+
+        public float CurFuel
+        {
+            get
+            {
+                return m_Fuel.CurLiters;
+            }
         }
 
         /*
          * Fuel up the truck
          */
-        public void FuelUp(float i_FuelAmount)
+        public void FuelUp(eFuelType i_FuelType, float i_FuelAmount)
         {
-            Fuel.FuelUp(eFuelType.Solar, i_FuelAmount);
-        }
-
-        public override int NumOfTires
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override float MaxTirePressure
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            m_Fuel.FuelUp(i_FuelType, i_FuelAmount);
         }
     }
 }
