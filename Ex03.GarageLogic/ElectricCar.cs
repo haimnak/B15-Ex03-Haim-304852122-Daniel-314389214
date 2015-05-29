@@ -64,12 +64,12 @@ namespace Ex03.GarageLogic
             {
                 if (this.m_Electric != null)
                 {
-                    float curCharge = this.m_Electric.TimeLeftOnBattery;
-                    float newCharge = curCharge + value;
+                    float newCharge = this.Charge + value;
 
                     if (newCharge <= this.MaxBatteryCharge)
                     {
-                        this.m_Electric.TimeLeftOnBattery += value;
+                        this.Charge += value;
+                        this.Energy = this.Charge / this.MaxBatteryCharge;
                     }
                 }
             }

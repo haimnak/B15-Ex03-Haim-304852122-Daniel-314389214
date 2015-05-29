@@ -41,16 +41,16 @@ namespace Ex03.GarageLogic
             return string.Format("LicenseID: {0},\n Model: {1},\n  Tires: {2}", this.LicenseID, this.Model, tiresDetails(Tires));
         }
 
-        public StringBuilder tiresDetails(List<Tire> tires)
+        public StringBuilder TiresDetails(List<Tire> tires)
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < tires.Count; i++)
+            foreach (Tire tire in tires)
             {
-                sb.Append(tires[i].ToString());
+                sb.Append(tire.ToString());
             }
             return sb;
         }
 
-        public object currentEnergy { get; set; }
+        public float Energy { get; protected set; }
     }
 }

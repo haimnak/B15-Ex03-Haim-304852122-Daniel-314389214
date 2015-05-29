@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
             : base(i_NumOfDoors, i_Color)
         {
             this.CurFuel = i_CurFuel;
-            Engine = new Fuel(this.CurFuel, this.MaxFuel, this.FuelType);
+            this.Engine = new Fuel(this.CurFuel, this.MaxFuel, this.FuelType);
 
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
@@ -99,15 +99,5 @@ namespace Ex03.GarageLogic
         /// Gets or sets the cur fuel.
         /// </summary>
         public float CurFuel { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tires.
-        /// </summary>
-        public override sealed List<Tire> Tires { get; protected set; }
-
-        /// <summary>
-        /// Gets or sets the engine.
-        /// </summary>
-        public override sealed Engine Engine { get; protected set; }
     }
 }
