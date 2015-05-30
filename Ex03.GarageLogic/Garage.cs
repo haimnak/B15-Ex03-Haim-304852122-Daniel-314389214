@@ -81,7 +81,7 @@ namespace Ex03.GarageLogic
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
                 Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
-                electricEngine.recharge(amount);
+                electricEngine.Charge = amount;
 
             }
             else

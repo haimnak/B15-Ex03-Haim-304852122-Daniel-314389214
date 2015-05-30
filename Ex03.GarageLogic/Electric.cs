@@ -17,8 +17,9 @@ namespace Ex03.GarageLogic
 
         public Electric(float i_Charge, float i_MaxBatteryTime)
         {
-            this.Charge = i_Charge;
             this.MaxBatteryTime = i_MaxBatteryTime;
+            this.Charge = i_Charge;
+            
         }
 
         public float MaxBatteryTime { get; private set; }
@@ -50,9 +51,5 @@ namespace Ex03.GarageLogic
             m_Charge = MaxBatteryTime;
         }
 
-        public void recharge(float amount)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

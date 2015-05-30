@@ -30,21 +30,6 @@ namespace Ex03.GarageLogic
 
             return tireList;
         }
-//
-//        public Electric Electric(float i_Charge, float i_MaxBatteryTime)
-//        {
-//            return new Electric(i_Charge, i_MaxBatteryTime);
-//        }
-//
-//        public Fuel Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
-//        {
-//            return new Fuel(i_CurLitersInTank, i_MaxLiters, i_FuelType);
-//        }
-//
-//        public OwnerDetails Owner(string i_OwnerName, string i_OwnerNumber)
-//        {
-//            return new OwnerDetails(i_OwnerName, i_OwnerNumber);
-//        }
 
         public static Vehicle CreateVehicle(
             eVehicleType i_VehicleType,
@@ -76,7 +61,7 @@ namespace Ex03.GarageLogic
             }
 
             // Set general vehicle properties
-            /*
+            
             if (vehicle != null)
             {
                 vehicle.LicenseID = i_LicenseID;
@@ -88,7 +73,7 @@ namespace Ex03.GarageLogic
                     4);
                 
             }
-            */
+            
             return vehicle;
         }
     }
