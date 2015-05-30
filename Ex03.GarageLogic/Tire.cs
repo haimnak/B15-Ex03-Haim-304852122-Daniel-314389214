@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
+    public enum eNumOfTires
+    {
+        two, 
+        four,
+        sixteen
+    }
     /*
         * Holds the tire properties
         */

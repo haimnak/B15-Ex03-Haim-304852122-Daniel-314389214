@@ -75,13 +75,14 @@ namespace Ex03.GarageLogic
             }
 
             // Set general vehicle properties
+            /*
             if (vehicle != null)
             {
                 vehicle.LicenseID = i_LicenseID;
                 vehicle.Model = i_VehicleModel;
                 vehicle.Tires = Tires(i_TireManufacturer, )
             }
-
+            */
             return vehicle;
         }
     }

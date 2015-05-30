@@ -49,5 +49,10 @@ namespace Ex03.GarageLogic
         {
             m_Charge = MaxBatteryTime;
         }
+
+        public void recharge(float amount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
