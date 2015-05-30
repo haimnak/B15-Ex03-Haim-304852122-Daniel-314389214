@@ -21,7 +21,8 @@ namespace Ex03.GarageLogic
             CurrentCarryingWeight = i_CurrentCarryingWeight;
             NumOfTires = 16;
 
-            this.Engine = new Fuel(i_CurLitersInTank, 170, eFuelType.Solar);
+            m_Fuel = new Fuel(i_CurLitersInTank, 170, eFuelType.Solar);
+            this.Engine = m_Fuel;
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
             for (int i = 0; i < this.NumOfTires; i++)

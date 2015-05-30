@@ -45,7 +45,8 @@ namespace Ex03.GarageLogic
             float i_TireAirPressure)
             : base(i_NumOfDoors, i_Color)
         {
-            this.Engine = new Fuel(i_CurFuel, 35, eFuelType.Octan96);
+            m_Fuel = new Fuel(i_CurFuel, 35, eFuelType.Octan96);
+            Engine = m_Fuel;
             List<Tire> tireList = new List<Tire>(this.NumOfTires);
 
             for (int i = 0; i < this.NumOfTires; i++)

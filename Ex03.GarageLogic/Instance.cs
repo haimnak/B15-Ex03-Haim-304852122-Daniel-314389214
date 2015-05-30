@@ -14,11 +14,37 @@ namespace Ex03.GarageLogic
 
     public class Instance
     {
-
-        public OwnerDetails Owner(string i_OwnerName, string i_OwnerNumber)
+        public List<Tire> Tires(
+            string i_TireManufacturer,
+            float i_TireAirPressure,
+            float i_MaxAirPressure,
+            int i_NumOfTires)
         {
-            return new OwnerDetails(i_OwnerName, i_OwnerNumber);
+            List<Tire> tireList = new List<Tire>(i_NumOfTires);
+
+            for (int i = 0; i < i_NumOfTires; i++)
+            {
+                Tire tire = new Tire(i_MaxAirPressure, i_TireManufacturer, i_TireAirPressure);
+                tireList.Add(tire);
+            }
+
+            return tireList;
         }
+//
+//        public Electric Electric(float i_Charge, float i_MaxBatteryTime)
+//        {
+//            return new Electric(i_Charge, i_MaxBatteryTime);
+//        }
+//
+//        public Fuel Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
+//        {
+//            return new Fuel(i_CurLitersInTank, i_MaxLiters, i_FuelType);
+//        }
+//
+//        public OwnerDetails Owner(string i_OwnerName, string i_OwnerNumber)
+//        {
+//            return new OwnerDetails(i_OwnerName, i_OwnerNumber);
+//        }
 
         public static Vehicle CreateVehicle(
             eVehicleType i_VehicleType,
@@ -36,10 +62,7 @@ namespace Ex03.GarageLogic
                     vehicle = new ElectricCar(
                         //TODO: Fix parameters here compared to input
                         (eNumOfDoors)i_VehicleDetails["doors"],
-                        (eColor)i_VehicleDetails["Color"],
-                        i_Energy,
-                        (string)i_VehicleDetails["TireManufacturer"],
-                        (float)i_VehicleDetails["TireAirPressure"]);
+                        (eColor)i_VehicleDetails["Color"]);
                     break;
                 case eVehicleType.ElectricMotorcycle:
                     break;
@@ -56,6 +79,7 @@ namespace Ex03.GarageLogic
             {
                 vehicle.LicenseID = i_LicenseID;
                 vehicle.Model = i_VehicleModel;
+                vehicle.Tires = Tires(i_TireManufacturer, )
             }
 
             return vehicle;

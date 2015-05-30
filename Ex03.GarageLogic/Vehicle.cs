@@ -28,13 +28,13 @@ namespace Ex03.GarageLogic
 
         public string Model { get; set; }
 
-        public int NumOfTires { get; protected set; }
+        public int NumOfTires { get; set; }
 
-        public float MaxTirePressure { get; protected set; }
+        public float MaxTirePressure { get; set; }
 
-        public List<Tire> Tires { get; protected set; }
+        public List<Tire> Tires { get; set; }
 
-        public Engine Engine { get; protected set; }
+        public Engine Engine { get; set; }
 
         public override string ToString()
         {
