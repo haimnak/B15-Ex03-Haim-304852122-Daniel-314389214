@@ -11,9 +11,19 @@ namespace Ex03.GarageLogic
     /*
      * Creates object instances
      */
-
+    
     public class Instance
     {
+        private static Vehicle m_Vehicle;
+
+        private static Dictionary<string, object> m_VehicleDetails;
+
+        private static string m_VehicleModel;
+
+        private static string m_LicenseID;
+
+        private static float m_Energy;
+
         public static List<Tire> CreateTires(
             string i_TireManufacturer,
             float i_TireAirPressure,
@@ -38,43 +48,82 @@ namespace Ex03.GarageLogic
             float i_Energy,
             Dictionary<string, object> i_VehicleDetails)
         {
-            Vehicle vehicle = null;
-            eVehicleType vehicleType = i_VehicleType;
+            m_Vehicle = null;
+            m_VehicleDetails = i_VehicleDetails;
+            m_VehicleModel = i_VehicleModel;
+            m_LicenseID = i_LicenseID;
+            m_Energy = i_Energy;
 
             switch (i_VehicleType)
             {
                 case eVehicleType.ElectricCar:
-                    vehicle = new ElectricCar(
-                        (eNumOfDoors)i_VehicleDetails["doors"],
-                        (eColor)i_VehicleDetails["Color"]);
-                        vehicle.Engine = new Electric(i_Energy, GlobalProperties.k_MaxEnergyElectricCar);
+                    instantiateElectricCar();
                     break;
                 case eVehicleType.ElectricMotorcycle:
+                    instantiateElectricMotorcycle();
                     break;
                 case eVehicleType.GasCar:
+                    instantiateGasCar();
                     break;
                 case eVehicleType.GasMotorcycle:
+                    instantiateGasMotorcycle();
                     break;
                 case eVehicleType.Truck:
+                    instantiateTruck();
                     break;
             }
 
             // Set general vehicle properties
             
-            if (vehicle != null)
+            if (m_Vehicle != null)
             {
-                vehicle.LicenseID = i_LicenseID;
-                vehicle.Model = i_VehicleModel;
-                vehicle.Tires = CreateTires(
-                    (string)i_VehicleDetails["TireManufacturer"],
-                    (float)i_VehicleDetails["TireAirPressure"],
-                    GlobalProperties.k_MaxAirPressureElectricCar,
-                    GlobalProperties.k_NumOfTiresCar);
-                
+                m_Vehicle.LicenseID = i_LicenseID;
+                m_Vehicle.Model = i_VehicleModel;
             }
             
-            return vehicle;
+            return m_Vehicle;
         }
+
+        private static void instantiateTruck()
+        {
+            m_Vehicle = new Truck(
+                        (bool)m_VehicleDetails["dangerousMaterials"],
+                        (float)m_VehicleDetails["CurrentCarryingWeight"]);
+            m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyTruck, GlobalProperties.k_FuelTypeTruck);
+        }
+
+        private static void instantiateGasMotorcycle()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void instantiateGasCar()
+        {
+            m_Vehicle = new GasCar(
+                        (eNumOfDoors)m_VehicleDetails["doors"],
+                        (eColor)m_VehicleDetails["Color"]);
+            m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyGasCar, GlobalProperties.k_FuelTypeCar);
+        }
+
+        private static void instantiateElectricMotorcycle()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void instantiateElectricCar()
+        {
+            m_Vehicle = new ElectricCar(
+                        (eNumOfDoors)m_VehicleDetails["doors"],
+                        (eColor)m_VehicleDetails["Color"]);
+            m_Vehicle.Engine = new Electric(m_Energy, GlobalProperties.k_MaxEnergyElectricCar);
+            m_Vehicle.Tires = CreateTires(
+            (string)m_VehicleDetails["TireManufacturer"],
+            (float)m_VehicleDetails["TireAirPressure"],
+            GlobalProperties.k_MaxAirPressureElectricCar,
+            GlobalProperties.k_NumOfTiresCar);
+        }
+
+        
     }
 }
 
