@@ -8,9 +8,9 @@ namespace Ex03.GarageLogic
 {
     public enum eNumOfTires
     {
-        two, 
-        four,
-        sixteen
+        Two = 2, 
+        Four = 4,
+        Sixteen = 16
     }
     /*
         * Holds the tire properties
