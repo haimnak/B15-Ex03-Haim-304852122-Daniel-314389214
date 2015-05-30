@@ -8,6 +8,8 @@ namespace Ex03.GarageLogic
 {
     public class GlobalProperties
     {
+        
+
         public const float k_MaxAirPressureElectricCar = 31;
         public const float k_MaxAirPressureGasCar = 31;
         public const float k_MaxAirPressureElectricMotorCycle = 31;
@@ -26,5 +28,6 @@ namespace Ex03.GarageLogic
 
         public const eFuelType k_FuelTypeCar = eFuelType.Octan96;
         public const eFuelType k_FuelTypeMotorCycle = eFuelType.Octan98;
+        public const eFuelType k_FuelTypeTruck = eFuelType.Solar;
     }
 }
