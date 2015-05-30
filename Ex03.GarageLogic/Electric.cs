@@ -33,7 +33,7 @@ namespace Ex03.GarageLogic
 
             set
             {
-                float newTimeLeftOnBattery = this.m_Charge += value;
+                float newTimeLeftOnBattery = this.m_Charge + value;
                 if (newTimeLeftOnBattery <= this.MaxBatteryTime)
                 {
                     this.m_Charge += value;
@@ -41,7 +41,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Charge above max");
+                    throw new ValueOutOfRangeException();
                 }
             }
         }
