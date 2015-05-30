@@ -38,19 +38,24 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format("LicenseID: {0},\n Model: {1},\n  Tires: {2}", this.LicenseID, this.Model, TiresDetails(Tires));
+            return string.Format("LicenseID: {0}\nModel: {1}\nTires details: {2}", this.LicenseID, this.Model, TiresDetails(Tires));
         }
 
         public StringBuilder TiresDetails(List<Tire> tires)
         {
             StringBuilder sb = new StringBuilder();
+            int countTires = 1;
             foreach (Tire tire in tires)
             {
-                sb.Append(tire.ToString());
+                sb.Append("\n" + "Tire " + countTires + "\n" + tire.ToString() + "\n");
+                countTires++;
             }
             return sb;
         }
 
-        public float Energy { get; protected set; }
+        public float Energy
+        {
+            get { return Engine.EnergyLevel * 100; }
+        }
     }
 }

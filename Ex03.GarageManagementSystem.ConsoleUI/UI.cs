@@ -284,6 +284,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                 string tireManufacturer = View.GeneralScan("Tire Manufacturer:");
                 float tireAirPressure = View.NumberScan("Tire Air Pressure:");
 
+                details.Add("Energy", energy);
                 details.Add("TireManufacturer", tireManufacturer);
                 details.Add("TireAirPressure", tireAirPressure);
 

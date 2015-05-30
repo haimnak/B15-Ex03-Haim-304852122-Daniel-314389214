@@ -8,31 +8,23 @@ namespace Ex03.GarageLogic
 {
     public class VehicleInGarage
     {
-        public Vehicle vehicle;
-        public OwnerDetails owner;
-        public eVehicleStatuses status;
+        public Vehicle vehicle{ get; set; }
+        public OwnerDetails owner { get; set; }
+        public eVehicleStatuses status { get; set; }
 
-        public VehicleInGarage(Vehicle i_vehicle, OwnerDetails i_owner, eVehicleStatuses i_status)
+        public VehicleInGarage(Vehicle i_Vehicle, OwnerDetails i_Owner, eVehicleStatuses i_Status)
         {
-            this.vehicle = i_vehicle;
-            this.owner = i_owner;
-            this.status = i_status;
+            this.vehicle = i_Vehicle;
+            this.owner = i_Owner;
+            this.status = status;
         }
 
 
         public override string ToString()
         {
-            return string.Format(vehicle.ToString());
-       }
-
-        public StringBuilder tiresDetails(List<Tire> tires)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (Tire tire in tires)
-            {
-                sb.Append(tire.ToString());
-            }
-            return sb;
+            return string.Format("Owner name: {0}\n{1}\nCurrent Energy: {2}% ", owner.Name.ToString(), vehicle.ToString(), vehicle.Energy, vehicle.Engine );
         }
+
+
     }
 }

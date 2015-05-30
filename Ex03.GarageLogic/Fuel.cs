@@ -45,21 +45,24 @@ namespace Ex03.GarageLogic
         /*
          * Add fuel to vehicle if the type and amount are valid
          */
-        public void FuelUp(eFuelType i_FuelType, float i_FuelAmount)
+        public bool FuelUp(eFuelType i_FuelType, float i_FuelAmount)
         {
+            bool success = false;
             float newFuelAmount = i_FuelAmount + m_CurLitersInTank;
 
             if (newFuelAmount <= MaxLiters && i_FuelType == FuelType)
             {
                 m_CurLitersInTank += i_FuelAmount;
                 EnergyLevel = m_CurLitersInTank / MaxLiters;
+                success = true;
             }
-            // TODO: add exception
+            return false;
         }
 
         public void FullTank()
         {
             m_CurLitersInTank = MaxLiters;
         }
+
     }
 }
