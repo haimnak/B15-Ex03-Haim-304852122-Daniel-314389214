@@ -12,29 +12,14 @@ namespace Ex03.GarageLogic
 
         public Truck(
             bool i_DangerousMaterials,
-            float i_CurrentCarryingWeight,
-            float i_CurLitersInTank,
-            string i_TireManufacturer,
-            float i_TireAirPressure)
+            float i_CurrentCarryingWeight)
         {
             DangerousMaterials = i_DangerousMaterials;
             CurrentCarryingWeight = i_CurrentCarryingWeight;
-            NumOfTires = 16;
-
-            m_Fuel = new Fuel(i_CurLitersInTank, 170, eFuelType.Solar);
-            this.Engine = m_Fuel;
-            List<Tire> tireList = new List<Tire>(this.NumOfTires);
-
-            for (int i = 0; i < this.NumOfTires; i++)
-            {
-                Tire tire = new Tire(31, i_TireManufacturer, i_TireAirPressure);
-                tireList.Add(tire);
-            }
-
-            this.Tires = tireList;
+            m_Fuel = Engine as Fuel;
         }
 
-        public float CurrentCarryingWeight { get; set; }
+        public float CurrentCarryingWeight { get; private set; }
 
         public bool DangerousMaterials { get; private set; }
 

@@ -19,43 +19,12 @@ namespace Ex03.GarageLogic
 
         private readonly Fuel m_Fuel;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GasCar"/> class.
-        /// </summary>
-        /// <param name="i_NumOfDoors">
-        /// The i_ num of doors.
-        /// </param>
-        /// <param name="i_Color">
-        /// The i_ color.
-        /// </param>
-        /// <param name="i_CurFuel">
-        /// The i_ cur fuel.
-        /// </param>
-        /// <param name="i_TireManufacturer">
-        /// The i_ tire manufacturer.
-        /// </param>
-        /// <param name="i_TireAirPressure">
-        /// The i_ tire air pressure.
-        /// </param>
         public GasCar(
             eNumOfDoors i_NumOfDoors,
-            eColor i_Color,
-            float i_CurFuel,
-            string i_TireManufacturer,
-            float i_TireAirPressure)
+            eColor i_Color)
             : base(i_NumOfDoors, i_Color)
         {
-            m_Fuel = new Fuel(i_CurFuel, 35, eFuelType.Octan96);
-            Engine = m_Fuel;
-            List<Tire> tireList = new List<Tire>(this.NumOfTires);
-
-            for (int i = 0; i < this.NumOfTires; i++)
-            {
-                Tire tire = new Tire(31, i_TireManufacturer, i_TireAirPressure);
-                tireList.Add(tire);
-            }
-
-            this.Tires = tireList;
+            m_Fuel = Engine as Fuel;
         }
 
         /// <summary>
