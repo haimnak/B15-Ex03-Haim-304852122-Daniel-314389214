@@ -74,7 +74,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         RefuelVehicle();
                         break;
                     case eMainMenu.RechargeVehicle:
-                        RefuelVehicle();
+                        RechargeVehicle();
                         break;
                     case eMainMenu.GetData:
                         GetData();
