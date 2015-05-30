@@ -31,9 +31,7 @@ namespace Ex03.GarageLogic
         }
 
         public float MaxLiters { get; private set; }
-
         public eFuelType FuelType { get; private set; }
-
         public float CurLiters
         { 
             get
@@ -41,14 +39,12 @@ namespace Ex03.GarageLogic
                 return m_CurLitersInTank;
             }
         }
-
         /*
          * Add fuel to vehicle if the type and amount are valid
          */
         public void FuelUp(eFuelType i_FuelType, float i_FuelAmount)
         {
             float newFuelAmount = i_FuelAmount + m_CurLitersInTank;
-
             if (newFuelAmount <= MaxLiters && i_FuelType == FuelType)
             {
                 m_CurLitersInTank += i_FuelAmount;
@@ -60,6 +56,11 @@ namespace Ex03.GarageLogic
         public void FullTank()
         {
             m_CurLitersInTank = MaxLiters;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("MaxLiters: {0}, FuelType: {1}, CurLiters: {2}", this.MaxLiters, this.FuelType, this.CurLiters);
         }
     }
 }

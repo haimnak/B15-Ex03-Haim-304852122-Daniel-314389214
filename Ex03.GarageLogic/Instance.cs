@@ -90,6 +90,11 @@ namespace Ex03.GarageLogic
                         (bool)m_VehicleDetails["dangerousMaterials"],
                         (float)m_VehicleDetails["CurrentCarryingWeight"]);
             m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyTruck, GlobalProperties.k_FuelTypeTruck);
+            m_Vehicle.Tires = CreateTires(
+            (string)m_VehicleDetails["TireManufacturer"],
+            (float)m_VehicleDetails["TireAirPressure"],
+            GlobalProperties.k_MaxAirPressureTruck,
+            GlobalProperties.k_NumOfTiresTruck);
         }
 
         private static void instantiateGasMotorcycle()
@@ -103,6 +108,11 @@ namespace Ex03.GarageLogic
                         (eNumOfDoors)m_VehicleDetails["doors"],
                         (eColor)m_VehicleDetails["Color"]);
             m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyGasCar, GlobalProperties.k_FuelTypeCar);
+            m_Vehicle.Tires = CreateTires(
+            (string)m_VehicleDetails["TireManufacturer"],
+            (float)m_VehicleDetails["TireAirPressure"],
+            GlobalProperties.k_MaxAirPressureGasCar,
+            GlobalProperties.k_NumOfTiresCar);
         }
 
         private static void instantiateElectricMotorcycle()
@@ -122,8 +132,6 @@ namespace Ex03.GarageLogic
             GlobalProperties.k_MaxAirPressureElectricCar,
             GlobalProperties.k_NumOfTiresCar);
         }
-
-        
     }
 }
 

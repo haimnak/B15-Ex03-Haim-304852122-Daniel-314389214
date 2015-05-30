@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
+    using System;
     using System.Collections.Generic;
 
     public enum eVehicleType
@@ -36,9 +37,37 @@ namespace Ex03.GarageLogic
 
         public Engine Engine { get; set; }
 
+        public float Energy
+        {
+            get
+            {
+                return Engine.EnergyLevel * 100;
+            }
+        }
+
         public override string ToString()
         {
-            return string.Format("LicenseID: {0},\n Model: {1},\n  Tires: {2}", this.LicenseID, this.Model, TiresDetails(Tires));
+            return string.Format("LicenseID: {0},\n Model: {1},\n  Tires: {2},\n  Engine: {2}", this.LicenseID, this.Model, TiresDetails(Tires));
+        }
+
+        public string EngineDetails()
+        {
+            string engineDetails = string.Empty;
+            Electric electricEngine = Engine as Electric;
+
+            if (electricEngine == null)
+            {
+                Fuel fuelEngine = Engine as Fuel;
+                if (fuelEngine != null)
+                {
+                    engineDetails = fuelEngine.ToString();
+                }
+            }
+            else
+            {
+                engineDetails = electricEngine.ToString();
+            }
+            return engineDetails;
         }
 
         public StringBuilder TiresDetails(List<Tire> tires)
@@ -50,7 +79,5 @@ namespace Ex03.GarageLogic
             }
             return sb;
         }
-
-        public float Energy { get; protected set; }
     }
 }

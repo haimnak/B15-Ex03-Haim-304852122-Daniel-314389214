@@ -51,5 +51,9 @@ namespace Ex03.GarageLogic
             m_Charge = MaxBatteryTime;
         }
 
+        public override string ToString()
+        {
+            return string.Format("MaxBatteryTime: {0}, Charge: {1}", this.MaxBatteryTime, this.Charge);
+        }
     }
 }
