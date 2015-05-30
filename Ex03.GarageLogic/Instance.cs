@@ -18,11 +18,11 @@ namespace Ex03.GarageLogic
             string i_TireManufacturer,
             float i_TireAirPressure,
             float i_MaxAirPressure,
-            int i_NumOfTires)
+            eNumOfTires i_NumOfTires)
         {
-            List<Tire> tireList = new List<Tire>(i_NumOfTires);
+            List<Tire> tireList = new List<Tire>((int)i_NumOfTires);
 
-            for (int i = 0; i < i_NumOfTires; i++)
+            for (int i = 0; i < (int)i_NumOfTires; i++)
             {
                 Tire tire = new Tire(i_MaxAirPressure, i_TireManufacturer, i_TireAirPressure);
                 tireList.Add(tire);
@@ -45,10 +45,9 @@ namespace Ex03.GarageLogic
             {
                 case eVehicleType.ElectricCar:
                     vehicle = new ElectricCar(
-                        //TODO: Fix parameters here compared to input
                         (eNumOfDoors)i_VehicleDetails["doors"],
                         (eColor)i_VehicleDetails["Color"]);
-                        vehicle.Engine = new Electric(i_Energy, GlobalProperties.maxEnergyElectricCar);
+                        vehicle.Engine = new Electric(i_Energy, GlobalProperties.k_MaxEnergyElectricCar);
                     break;
                 case eVehicleType.ElectricMotorcycle:
                     break;
@@ -69,8 +68,8 @@ namespace Ex03.GarageLogic
                 vehicle.Tires = CreateTires(
                     (string)i_VehicleDetails["TireManufacturer"],
                     (float)i_VehicleDetails["TireAirPressure"],
-                    GlobalProperties.maxAirPressureElectricCar,
-                    4);
+                    GlobalProperties.k_MaxAirPressureElectricCar,
+                    GlobalProperties.k_NumOfTiresCar);
                 
             }
             
