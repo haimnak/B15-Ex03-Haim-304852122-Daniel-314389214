@@ -64,5 +64,9 @@ namespace Ex03.GarageLogic
             m_CurLitersInTank = MaxLiters;
         }
 
+        public override string ToString()
+        {
+            return string.Format("FuelType: {0}", FuelType);
+        }
     }
 }
