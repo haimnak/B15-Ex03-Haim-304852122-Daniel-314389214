@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-
+    using System.Net.NetworkInformation;
 
     /*
      * Creates object instances
@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
 
     public class Instance
     {
-        public List<Tire> Tires(
+        public static List<Tire> CreateTires(
             string i_TireManufacturer,
             float i_TireAirPressure,
             float i_MaxAirPressure,
@@ -63,6 +63,7 @@ namespace Ex03.GarageLogic
                         //TODO: Fix parameters here compared to input
                         (eNumOfDoors)i_VehicleDetails["doors"],
                         (eColor)i_VehicleDetails["Color"]);
+                        vehicle.Engine = new Electric(i_Energy, GlobalProperties.maxEnergyElectricCar);
                     break;
                 case eVehicleType.ElectricMotorcycle:
                     break;
@@ -80,7 +81,12 @@ namespace Ex03.GarageLogic
             {
                 vehicle.LicenseID = i_LicenseID;
                 vehicle.Model = i_VehicleModel;
-                vehicle.Tires = Tires(i_TireManufacturer, )
+                vehicle.Tires = CreateTires(
+                    (string)i_VehicleDetails["TireManufacturer"],
+                    (float)i_VehicleDetails["TireAirPressure"],
+                    GlobalProperties.maxAirPressureElectricCar,
+                    4);
+                
             }
             */
             return vehicle;
