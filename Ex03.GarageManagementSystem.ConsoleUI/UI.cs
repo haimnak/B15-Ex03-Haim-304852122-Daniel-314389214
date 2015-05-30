@@ -135,7 +135,14 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             if (carInGarage)
             {
                 float amount = View.NumberScan("Inserts amount:");
-                m_Garage.rechargeVehicle(licenseID, amount);
+
+                while (!m_Garage.RechargeVehicle(licenseID, amount))
+                {
+                    View.PrintInvalidInput("Too much energy!");
+                    amount = View.NumberScan("Inserts amount:");
+                    m_Garage.RechargeVehicle(licenseID, amount);
+                }
+
                 Console.ReadLine();
                 Console.Clear();
                 MainMenu();

@@ -74,20 +74,27 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void rechargeVehicle(string licenseId, float amount)
+        public bool RechargeVehicle(string licenseId, float amount)
         {
+            bool success = false;
             if (thisCarInTheGarage(licenseId))
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
                 Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
-                electricEngine.Charge = amount;
 
+                if (electricEngine.Charge + amount <= electricEngine.MaxBatteryTime)
+                {
+                    electricEngine.Charge = amount;
+                    success = true;
+                }
             }
             else
             {
                 throw new ArgumentException("car not in the garage");
             }
+
+            return success;
         }
 
         public void InflateTiresToMax(string licenseId)

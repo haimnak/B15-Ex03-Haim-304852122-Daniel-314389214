@@ -41,7 +41,7 @@ namespace Ex03.GarageLogic
                 }
                 else
                 {
-                    throw new ValueOutOfRangeException();
+                    //throw new ValueOutOfRangeException();
                 }
             }
         }
