@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
+    using System;
     using System.Collections.Generic;
 
     public enum eVehicleType
@@ -36,26 +37,50 @@ namespace Ex03.GarageLogic
 
         public Engine Engine { get; set; }
 
+        public float Energy
+        {
+            get
+            {
+                return Engine.EnergyLevel * 100;
+            }
+        }
+
         public override string ToString()
         {
-            return string.Format("LicenseID: {0}\nModel: {1}\nTires details: {2}", this.LicenseID, this.Model, TiresDetails(Tires));
+            return string.Format("LicenseID: {0}\nModel: {1}\nTires details: {2}\nEngine: {3}", this.LicenseID, this.Model, TiresDetails(Tires), this.EngineDetails());
+        }
+
+        public string EngineDetails()
+        {
+            string engineDetails = string.Empty;
+            Electric electricEngine = Engine as Electric;
+
+            if (electricEngine == null)
+            {
+                Fuel fuelEngine = Engine as Fuel;
+                if (fuelEngine != null)
+                {
+                    engineDetails = fuelEngine.ToString();
+                }
+            }
+            else
+            {
+                engineDetails = electricEngine.ToString();
+            }
+            return engineDetails;
         }
 
         public StringBuilder TiresDetails(List<Tire> tires)
         {
+            int tireNum = 0;
             StringBuilder sb = new StringBuilder();
-            int countTires = 1;
             foreach (Tire tire in tires)
             {
-                sb.Append("\n" + "Tire " + countTires + "\n" + tire.ToString() + "\n");
-                countTires++;
+                sb.Append("\n" + "Tire" + tireNum + "\n" + tire.ToString());
+                tireNum++;
+                
             }
             return sb;
-        }
-
-        public float Energy
-        {
-            get { return Engine.EnergyLevel * 100; }
         }
     }
 }

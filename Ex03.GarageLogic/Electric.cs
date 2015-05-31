@@ -50,6 +50,11 @@ namespace Ex03.GarageLogic
         {
             m_Charge = MaxBatteryTime;
         }
-
+        
+        public override string ToString()
+        {
+            return string.Format("Electric engine");
+        }
+         
     }
 }

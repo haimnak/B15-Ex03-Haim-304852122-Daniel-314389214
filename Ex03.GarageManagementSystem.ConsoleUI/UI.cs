@@ -259,10 +259,10 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             if (m_Garage.thisCarInTheGarage(licenseID))
             {
                 Console.WriteLine("The car is moving to fix");
-
-                     
                 m_Garage.updateCarStatus(licenseID, eVehicleStatuses.UnderRepair);
-                Console.ReadLine();
+                System.Threading.Thread.Sleep(2000);
+                Console.Clear();
+                MainMenu();
             }
             else
             {

@@ -9,10 +9,10 @@ namespace Ex03.GarageLogic
 
     public enum eFuelType
     {
-        Solar,
-        Octan95,
-        Octan96,
-        Octan98
+        Solar = 1,
+        Octan95 = 2,
+        Octan96 = 3,
+        Octan98 = 4
     }
 
     /*
@@ -24,16 +24,15 @@ namespace Ex03.GarageLogic
 
         public Fuel(float i_CurLitersInTank, float i_MaxLiters, eFuelType i_FuelType)
         {
-            FuelUp(i_FuelType, i_CurLitersInTank);
-            EnergyLevel = m_CurLitersInTank / MaxLiters;
             MaxLiters = i_MaxLiters;
             FuelType = i_FuelType;
+            FuelUp(i_FuelType, i_CurLitersInTank);
+            EnergyLevel = m_CurLitersInTank / i_MaxLiters;
+            
         }
 
         public float MaxLiters { get; private set; }
-
         public eFuelType FuelType { get; private set; }
-
         public float CurLiters
         { 
             get
@@ -41,7 +40,6 @@ namespace Ex03.GarageLogic
                 return m_CurLitersInTank;
             }
         }
-
         /*
          * Add fuel to vehicle if the type and amount are valid
          */
@@ -49,14 +47,13 @@ namespace Ex03.GarageLogic
         {
             bool success = false;
             float newFuelAmount = i_FuelAmount + m_CurLitersInTank;
-
             if (newFuelAmount <= MaxLiters && i_FuelType == FuelType)
             {
                 m_CurLitersInTank += i_FuelAmount;
                 EnergyLevel = m_CurLitersInTank / MaxLiters;
                 success = true;
             }
-            return false;
+            return success;
         }
 
         public void FullTank()
@@ -66,7 +63,11 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
+
             return string.Format("FuelType: {0}", FuelType);
+
+            //return string.Format("MaxLiters: {0}, FuelType: {1}, CurLiters: {2}", this.MaxLiters, this.FuelType, this.CurLiters);
+
         }
     }
 }

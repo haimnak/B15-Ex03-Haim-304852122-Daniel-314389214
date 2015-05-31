@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format("Owner name: {0}\n{1}\nCurrent Energy: {2}% ", owner.Name.ToString(), vehicle.ToString(), vehicle.Energy, vehicle.Engine );
+            return string.Format("Owner name: {0}\n{1}\nCurrent Energy: {2}%\n ", owner.Name.ToString(), vehicle.ToString(), vehicle.Energy);
         }
 
 
