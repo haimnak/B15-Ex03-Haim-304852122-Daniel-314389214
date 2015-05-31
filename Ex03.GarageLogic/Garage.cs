@@ -50,9 +50,9 @@ namespace Ex03.GarageLogic
         }
 
 
-        public bool refuelVehicle(string licenseId, eFuelType fuelType, float amount)
+        public void refuelVehicle(string licenseId, eFuelType fuelType, float amount)
         {
-            bool success = false;
+            
             if (thisCarInTheGarage(licenseId))
             {
                 VehicleInGarage vehicleInGarage;
@@ -60,10 +60,16 @@ namespace Ex03.GarageLogic
                 Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
                 if (fuelEngine != null)
                 {
-                    if (fuelEngine.FuelUp(fuelType, amount) == true)
+                    try
                     {
-                        success = true;
+                        fuelEngine.FuelUp(fuelType, amount);
                     }
+                    catch (Exception exception)
+                    {
+
+                        throw new ArgumentException("Invalid fuel type");
+                    }
+
                 }
                 else
                 {
@@ -75,7 +81,7 @@ namespace Ex03.GarageLogic
             {
                 throw new ArgumentException("car not in the garage");
             }
-            return success;
+            
         }
 
         public bool RechargeVehicle(string licenseId, float amount)
