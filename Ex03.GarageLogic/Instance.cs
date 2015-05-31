@@ -86,6 +86,7 @@ namespace Ex03.GarageLogic
 
         private static void instantiateTruck()
         {
+
             m_Vehicle = new Truck(
                         (bool)m_VehicleDetails["dangerousMaterials"],
                         (float)m_VehicleDetails["CurrentCarryingWeight"]);
