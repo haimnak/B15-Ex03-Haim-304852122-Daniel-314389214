@@ -191,7 +191,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
             if (carInGarage)
             {
-                eVehicleStatuses statusToChange = (eVehicleStatuses)View.MenuScan(@"Car status:
+                eVehicleStatus statusToChange = (eVehicleStatus)View.MenuScan(@"Car status:
 
 1. UnderRepair
 2. Repaired
@@ -219,7 +219,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
             if (choose == 1)
             {
-                eVehicleStatuses status = (eVehicleStatuses)View.MenuScan(@"Car status:
+                eVehicleStatus status = (eVehicleStatus)View.MenuScan(@"Car status:
 
 1. UnderRepair
 2. Repaired
@@ -270,7 +270,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             if (m_Garage.thisCarInTheGarage(licenseID))
             {
                 Console.WriteLine("The car is moving to fix");
-                m_Garage.updateCarStatus(licenseID, eVehicleStatuses.UnderRepair);
+                m_Garage.updateCarStatus(licenseID, eVehicleStatus.UnderRepair);
                 System.Threading.Thread.Sleep(2000);
                 Console.Clear();
                 MainMenu();

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
-    using System.Net.NetworkInformation;
-
+    using System.Collections.Generic;
     /*
      * Creates object instances
      */
@@ -17,10 +10,6 @@ namespace Ex03.GarageLogic
         private static Vehicle m_Vehicle;
 
         private static Dictionary<string, object> m_VehicleDetails;
-
-        private static string m_VehicleModel;
-
-        private static string m_LicenseID;
 
         private static float m_Energy;
 
@@ -50,8 +39,6 @@ namespace Ex03.GarageLogic
         {
             m_Vehicle = null;
             m_VehicleDetails = i_VehicleDetails;
-            m_VehicleModel = i_VehicleModel;
-            m_LicenseID = i_LicenseID;
             m_Energy = i_Energy;
 
             switch (i_VehicleType)
@@ -74,7 +61,6 @@ namespace Ex03.GarageLogic
             }
 
             // Set general vehicle properties
-            
             if (m_Vehicle != null)
             {
                 m_Vehicle.LicenseID = i_LicenseID;
@@ -86,7 +72,6 @@ namespace Ex03.GarageLogic
 
         private static void instantiateTruck()
         {
-
             m_Vehicle = new Truck(
                         (bool)m_VehicleDetails["dangerousMaterials"],
                         (float)m_VehicleDetails["CurrentCarryingWeight"]);
@@ -151,4 +136,3 @@ namespace Ex03.GarageLogic
         }
     }
 }
-
