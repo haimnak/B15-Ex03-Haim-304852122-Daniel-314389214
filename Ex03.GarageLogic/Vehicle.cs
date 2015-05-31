@@ -72,11 +72,11 @@ namespace Ex03.GarageLogic
 
         public StringBuilder TiresDetails(List<Tire> tires)
         {
-            int tireNum = 0;
+            int tireNum = 1;
             StringBuilder sb = new StringBuilder();
             foreach (Tire tire in tires)
             {
-                sb.Append("\n" + "Tire" + tireNum + "\n" + tire.ToString());
+                sb.Append("\n" + "Tire" + tireNum + ":\n" + tire.ToString());
                 tireNum++;
                 
             }

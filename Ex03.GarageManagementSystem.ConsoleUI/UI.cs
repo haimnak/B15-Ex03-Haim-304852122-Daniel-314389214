@@ -56,32 +56,43 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
             while (menuSelection != eMainMenu.Exit)
             {
-                switch (menuSelection)
+                try
                 {
-                    case eMainMenu.VehicleToGarage:
-                        AddVehicle();
-                        break;
-                    case eMainMenu.LicenseNumberList:
-                        GetFilteredList();
-                        break;
-                    case eMainMenu.UpdateStatus:
-                        UpdateVehicleStatus();
-                        break;
-                    case eMainMenu.InflateTires:
-                        InflateTires();
-                        break;
-                    case eMainMenu.RefuelVehicle:
-                        RefuelVehicle();
-                        break;
-                    case eMainMenu.RechargeVehicle:
-                        RechargeVehicle();
-                        break;
-                    case eMainMenu.GetData:
-                        GetData();
-                        break;
-                    case eMainMenu.Exit:
-                        break;
+                    switch (menuSelection)
+                    {
+                        case eMainMenu.VehicleToGarage:
+                            AddVehicle();
+                            break;
+                        case eMainMenu.LicenseNumberList:
+                            GetFilteredList();
+                            break;
+                        case eMainMenu.UpdateStatus:
+                            UpdateVehicleStatus();
+                            break;
+                        case eMainMenu.InflateTires:
+                            InflateTires();
+                            break;
+                        case eMainMenu.RefuelVehicle:
+                            RefuelVehicle();
+                            break;
+                        case eMainMenu.RechargeVehicle:
+                            RechargeVehicle();
+                            break;
+                        case eMainMenu.GetData:
+                            GetData();
+                            break;
+                        case eMainMenu.Exit:
+                            break;
+                    }
                 }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    System.Threading.Thread.Sleep(2000);
+                    Console.Clear();
+                    MainMenu();
+                }
+                
             }
         }
 
@@ -118,6 +129,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
                 float amount = View.NumberScan("Inserts amount:");
                 m_Garage.refuelVehicle(licenseID, fuelType, amount);
+                Console.WriteLine("Fueling is complete");
                 Console.ReadLine();
                 Console.Clear();
                 MainMenu();
@@ -142,7 +154,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                     amount = View.NumberScan("Inserts amount:");
                     m_Garage.RechargeVehicle(licenseID, amount);
                 }
-
+                Console.WriteLine("Charging completed");
                 Console.ReadLine();
                 Console.Clear();
                 MainMenu();
@@ -161,6 +173,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             if (carInGarage)
             {
                 m_Garage.InflateTiresToMax(licenseID);
+                Console.WriteLine("The tires inflated to the maximum");
                 Console.ReadLine();
                 Console.Clear();
                 MainMenu();
@@ -219,19 +232,17 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             }
             else
             {
-                List<string> licensesIDUnderRepair= new List<string>();
-                licensesIDUnderRepair = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.UnderRepair);
-                List<string> licensesIDRepaired = new List<string>();
-                licensesIDRepaired = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.Repaired);
-                List<string> licensesIDPaid = new List<string>();
-                licensesIDPaid = m_Garage.getLicensesIDInTheGarage(eVehicleStatuses.Paid);
-                printList(licensesIDUnderRepair);
-                printList(licensesIDRepaired);
-                printList(licensesIDPaid);
+                List<string> allLicenses = new List<string>();
+                foreach (KeyValuePair<string, VehicleInGarage> vehicleInGarage in m_Garage.AllCarsInTheGarage)
+                {
+                    allLicenses.Add(vehicleInGarage.Key);
+                }
+                printList(allLicenses);
                 Console.ReadLine();
                 Console.Clear();
                 MainMenu();
             }
+
         }
 
         private void printList(List<string> strings)
@@ -316,28 +327,28 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         details.Add("licenseType", licenseType);
 
                         // TODO: add NumberScan int Type in View class
-//                        float engineCapacity = View.NumberScan("Insert engine Capacity:");
-//                        if (engineCapacity != Math.Floor((engineCapacity)))
-//                        {
-//                            System.Console.WriteLine("invalid input");
-//                            View.NumberScan("Insert engine Capacity:");
-//                        }
-//                        else
-//                        {
-//                            details.Add("engineCapacity", engineCapacity);
-//                            break;
-//                        }
-                        break;
+                        float engineCapacity = View.NumberScan("Insert engine Capacity:");
+                        if (engineCapacity != Math.Floor((engineCapacity)))
+                        {
+                            System.Console.WriteLine("invalid input");
+                            View.NumberScan("Insert engine Capacity:");
+                        }
+                        else
+                        {
+                            details.Add("engineCapacity", (int)engineCapacity);
+                            break;
+                        }
+                      break;
 
 
                     case eVehicleType.Truck:
 
-                        // TODO: add MenuScan bool Type in View class? chagne dangerousMaterials to enum in Truck class?
+                       
                         int choose = View.MenuScan(@"Contains dangerous materials :
 1. Yes
 2. NO", 2);
                         bool dangerousMaterials;
-                        // TODO: Switch to Enum
+                        // 1 = yes
                         if (choose == 1)
                         {
                             dangerousMaterials = true;
@@ -359,9 +370,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                     energy,
                     details);
 
-                // upadate status in repair in garage class
-                //TODO: Use OwnerDetails obj here
-                m_Garage.InsertVehicle(owner.Name, owner.Number, vehicle);
+               m_Garage.InsertVehicle(owner.Name, owner.Number, vehicle);
                 Console.WriteLine("The new vehicle was added to the garage");
                 Console.ReadLine();
                 Console.Clear();

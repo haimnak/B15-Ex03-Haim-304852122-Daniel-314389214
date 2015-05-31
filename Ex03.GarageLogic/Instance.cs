@@ -103,7 +103,7 @@ namespace Ex03.GarageLogic
             m_Vehicle = new GasMotorcycle(
                         (eLicenseType)m_VehicleDetails["licenseType"],
                         (int)m_VehicleDetails["engineCapacity"]);
-            m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyGasCar, GlobalProperties.k_FuelTypeCar);
+            m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyGasMotorCycle, GlobalProperties.k_FuelTypeMotorCycle);
             m_Vehicle.Tires = CreateTires(
             (string)m_VehicleDetails["TireManufacturer"],
             (float)m_VehicleDetails["TireAirPressure"],
@@ -129,7 +129,7 @@ namespace Ex03.GarageLogic
             m_Vehicle = new ElectricMotorcycle(
                         (eLicenseType)m_VehicleDetails["licenseType"],
                         (int)m_VehicleDetails["engineCapacity"]);
-            m_Vehicle.Engine = new Electric(m_Energy, GlobalProperties.k_MaxAirPressureElectricMotorCycle);
+            m_Vehicle.Engine = new Electric(m_Energy, GlobalProperties.k_MaxEnergyElectricMotorCycle);
             m_Vehicle.Tires = CreateTires(
             (string)m_VehicleDetails["TireManufacturer"],
             (float)m_VehicleDetails["TireAirPressure"],

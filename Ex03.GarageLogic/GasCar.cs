@@ -18,6 +18,8 @@ namespace Ex03.GarageLogic
     {
 
         private readonly Fuel m_Fuel;
+        private readonly eNumOfDoors m_NumOfDoors;
+        private readonly eColor m_Color;
 
         public GasCar(
             eNumOfDoors i_NumOfDoors,
@@ -25,6 +27,8 @@ namespace Ex03.GarageLogic
             : base(i_NumOfDoors, i_Color)
         {
             m_Fuel = Engine as Fuel;
+            m_NumOfDoors = i_NumOfDoors;
+            m_Color = i_Color;
         }
 
         /// <summary>
@@ -63,6 +67,11 @@ namespace Ex03.GarageLogic
         public void FuelUp(eFuelType i_FuelType, float i_FuelAmount)
         {
             m_Fuel.FuelUp(i_FuelType, i_FuelAmount); 
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, Num Of Doors: {1}, Color: {2}", base.ToString(), m_NumOfDoors, m_Color);
         }
     }
 }

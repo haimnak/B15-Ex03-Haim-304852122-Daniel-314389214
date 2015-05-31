@@ -12,8 +12,8 @@ namespace Ex03.GarageLogic
     public class ElectricCar : Car
     {
         private readonly Electric m_Electric;
-        private eNumOfDoors m_NumOfDoors;
-        private eColor m_Color;
+        private readonly eNumOfDoors m_NumOfDoors;
+        private readonly eColor m_Color;
 
         public ElectricCar(
             eNumOfDoors i_NumOfDoors,
@@ -56,11 +56,12 @@ namespace Ex03.GarageLogic
                 this.m_Electric.ChargeToMax();
             }
         }
-
+        
         public override string ToString()
         {
-            return string.Format("Num Of Doors: {0}\nColor: {1}", m_NumOfDoors, m_Color);
+            return string.Format("{0}, Num Of Doors: {1}, Color: {2}", base.ToString(), m_NumOfDoors, m_Color);
         }
+         
     }
 }
 

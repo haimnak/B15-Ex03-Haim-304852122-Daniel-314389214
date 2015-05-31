@@ -8,10 +8,10 @@ namespace Ex03.GarageLogic
 {
     public enum eLicenseType
     {
-        A,
-        A2,
-        AB,
-        B1
+        A = 1,
+        A2 = 2,
+        AB = 3,
+        B1 = 4
     }
 
     public class Motorcycle : Vehicle

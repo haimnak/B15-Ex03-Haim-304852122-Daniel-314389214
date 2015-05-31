@@ -27,21 +27,13 @@ namespace Ex03.GarageLogic
     {
         public Dictionary<string, VehicleInGarage> AllCarsInTheGarage = new Dictionary<string, VehicleInGarage>();  
         
-        // Check if the vehicle is already in the garage acccording to license plate
-        // **Do I check here, or do I check outside and then insert?
-        // public VehicleArrival(enum type,string license)
-
-        // Get list of allowed vehicle types for garage entry
-        // public List<string> GetValidVehicleTypes()
-
-
         public bool thisCarInTheGarage(string i_licenseId)
         {
             bool inGarage = AllCarsInTheGarage.ContainsKey(i_licenseId);
                
             return inGarage;
         }
-        // TODO: add specific details according to the vehicle type
+       
         public string getData(string i_licenseId)
         {
             if (thisCarInTheGarage(i_licenseId))
@@ -66,10 +58,16 @@ namespace Ex03.GarageLogic
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
                 Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
-
-                if (fuelEngine.FuelUp(fuelType, amount) == true)
+                if (fuelEngine != null)
                 {
-                    success = true;
+                    if (fuelEngine.FuelUp(fuelType, amount) == true)
+                    {
+                        success = true;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Impossible fuel this vechicle type");
                 }
 
             }
@@ -88,12 +86,19 @@ namespace Ex03.GarageLogic
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
                 Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
-
-                if (electricEngine.Charge + amount <= electricEngine.MaxBatteryTime)
+                if (electricEngine != null)
                 {
-                    electricEngine.Charge = amount;
-                    success = true;
+                    if (electricEngine.Charge + amount <= electricEngine.MaxBatteryTime)
+                    {
+                        electricEngine.Charge = amount;
+                        success = true;
+                    }
                 }
+                else
+                {
+                    throw new ArgumentException("Impossible charge this vechicle type");
+                }
+                
             }
             else
             {
@@ -118,7 +123,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ArgumentException("car not in the garage");
+                throw new ArgumentException("Car not in the garage");
             }
         }
 
@@ -132,7 +137,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ArgumentException("car not in the garage");
+                throw new ArgumentException("Car not in the garage");
             }
         }
 
