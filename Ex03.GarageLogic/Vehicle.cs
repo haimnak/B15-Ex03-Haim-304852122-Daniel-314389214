@@ -1,15 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Vehicle.cs" company="">
-//   
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Text;
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
-    using System;
     using System.Collections.Generic;
+    using System.Text;
 
     public enum eVehicleType
     {
@@ -19,6 +11,7 @@ namespace Ex03.GarageLogic
          GasMotorcycle = 4,
          Truck = 5
     }
+
     /*
      * Vehicle class which contains global vehicle traits and methods
      */
@@ -67,6 +60,7 @@ namespace Ex03.GarageLogic
             {
                 engineDetails = electricEngine.ToString();
             }
+
             return engineDetails;
         }
 
@@ -78,8 +72,8 @@ namespace Ex03.GarageLogic
             {
                 sb.Append("\n" + "Tire" + tireNum + ":\n" + tire.ToString());
                 tireNum++;
-                
             }
+
             return sb;
         }
     }

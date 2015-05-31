@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     public class ElectricMotorcycle : Motorcycle
     {
-        private Electric m_Electric;
+        private readonly Electric m_Electric;
         private readonly eLicenseType m_LicenseType;
         private readonly int m_Hp;
 
@@ -51,6 +45,7 @@ namespace Ex03.GarageLogic
                 this.m_Electric.ChargeToMax();
             }
         }
+
         public override string ToString()
         {
             return string.Format("{0}, LicenseType: {1}, Hp: {2}", base.ToString(), m_LicenseType, m_Hp);

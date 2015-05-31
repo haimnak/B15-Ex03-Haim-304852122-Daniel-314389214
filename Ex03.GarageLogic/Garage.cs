@@ -1,21 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
+    using System;
+    using System.Collections.Generic;
+
     /*
         * Vehicle satus
         */
-    [Flags]
-    public enum eVehicleStatuses
+
+    /// <summary>
+    /// The e vehicle statuses.
+    /// </summary>
+    public enum eVehicleStatus
     {
-        UnderRepair = 1,
+        /// <summary>
+        /// The under repair.
+        /// </summary>
+        UnderRepair = 1, 
 
-        Repaired = 2,
+        /// <summary>
+        /// The repaired.
+        /// </summary>
+        Repaired = 2, 
 
+        /// <summary>
+        /// The paid.
+        /// </summary>
         Paid = 3
     }
 
@@ -23,32 +32,51 @@ namespace Ex03.GarageLogic
      * A new vehicle arrives at the garage: 
      * Create a vehicle instance and add it to the list
      */
+
+    /// <summary>
+    /// The garage.
+    /// </summary>
     public class Garage
     {
-        public Dictionary<string, VehicleInGarage> AllCarsInTheGarage = new Dictionary<string, VehicleInGarage>();  
-        
+        /// <summary>
+        /// The all cars in the garage.
+        /// </summary>
+        public Dictionary<string, VehicleInGarage> AllCarsInTheGarage = new Dictionary<string, VehicleInGarage>();
+
+        /// <summary>
+        /// The this car in the garage.
+        /// </summary>
+        /// <param name="i_licenseId">
+        /// The i_license id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool thisCarInTheGarage(string i_licenseId)
         {
             bool inGarage = AllCarsInTheGarage.ContainsKey(i_licenseId);
-               
+
             return inGarage;
         }
-       
+
         public string getData(string i_licenseId)
         {
             if (thisCarInTheGarage(i_licenseId))
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(i_licenseId, out vehicleInGarage);
-                if (vehicleInGarage != null) return vehicleInGarage.ToString();
+                if (vehicleInGarage != null)
+                {
+                    return vehicleInGarage.ToString();
+                }
             }
             else
             {
                 throw new ArgumentException("car not in the garage");
             }
+
             return null;
         }
-
 
         public bool refuelVehicle(string licenseId, eFuelType fuelType, float amount)
         {
@@ -57,24 +85,27 @@ namespace Ex03.GarageLogic
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
-                Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
-                if (fuelEngine != null)
+                if (vehicleInGarage != null)
                 {
-                    if (fuelEngine.FuelUp(fuelType, amount) == true)
+                    Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
+                    if (fuelEngine != null)
                     {
-                        success = true;
+                        if (fuelEngine.FuelUp(fuelType, amount))
+                        {
+                            success = true;
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Impossible fuel this vechicle type");
                     }
                 }
-                else
-                {
-                    throw new ArgumentException("Impossible fuel this vechicle type");
-                }
-
             }
             else
             {
                 throw new ArgumentException("car not in the garage");
             }
+
             return success;
         }
 
@@ -85,20 +116,22 @@ namespace Ex03.GarageLogic
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
-                Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
-                if (electricEngine != null)
+                if (vehicleInGarage != null)
                 {
-                    if (electricEngine.Charge + amount <= electricEngine.MaxBatteryTime)
+                    Electric electricEngine = vehicleInGarage.vehicle.Engine as Electric;
+                    if (electricEngine != null)
                     {
-                        electricEngine.Charge = amount;
-                        success = true;
+                        if (electricEngine.Charge + amount <= electricEngine.MaxBatteryTime)
+                        {
+                            electricEngine.Charge = amount;
+                            success = true;
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Impossible charge this vechicle type");
                     }
                 }
-                else
-                {
-                    throw new ArgumentException("Impossible charge this vechicle type");
-                }
-                
             }
             else
             {
@@ -113,13 +146,20 @@ namespace Ex03.GarageLogic
             if (thisCarInTheGarage(licenseId))
             {
                 VehicleInGarage vehicleInGarage;
-                AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
-                // Inflate each tire to maximum
-                for (int i = 0; i < vehicleInGarage.vehicle.Tires.Count; i++)
-                {
-                    vehicleInGarage.vehicle.Tires[i].inflateToMax();
-                }
+                bool success = AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
 
+                // Inflate each tire to maximum
+                if (success)
+                {
+                    foreach (Tire tire in vehicleInGarage.vehicle.Tires)
+                    {
+                        tire.inflateToMax();
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("No vehicle for that ID");
+                }
             }
             else
             {
@@ -127,13 +167,16 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void updateCarStatus(string licenseId, eVehicleStatuses statusToChange)
+        public void updateCarStatus(string licenseId, eVehicleStatus statusToChange)
         {
             if (thisCarInTheGarage(licenseId))
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
-                vehicleInGarage.status = statusToChange;
+                if (vehicleInGarage != null)
+                {
+                    vehicleInGarage.status = statusToChange;
+                }
             }
             else
             {
@@ -141,7 +184,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public List<string> getLicensesIDInTheGarage(eVehicleStatuses status)
+        public List<string> getLicensesIDInTheGarage(eVehicleStatus status)
         {
             List<string> licenses = new List<string>();
             foreach (KeyValuePair<string, VehicleInGarage> vehicleInGarage in AllCarsInTheGarage)
@@ -151,14 +194,27 @@ namespace Ex03.GarageLogic
                     licenses.Add(vehicleInGarage.Key);
                 }
             }
+
             return licenses;
         }
 
+        /// <summary>
+        /// The insert vehicle.
+        /// </summary>
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        /// <param name="phoneNumber">
+        /// The phone number.
+        /// </param>
+        /// <param name="i_vehicle">
+        /// The i_vehicle.
+        /// </param>
         public void InsertVehicle(string name, string phoneNumber, Vehicle i_vehicle)
         {
             OwnerDetails owner = new OwnerDetails(name, phoneNumber);
-            VehicleInGarage vehicle = new  VehicleInGarage(i_vehicle, owner, eVehicleStatuses.UnderRepair);
-            AllCarsInTheGarage.Add(i_vehicle.LicenseID,vehicle);
+            VehicleInGarage vehicle = new VehicleInGarage(i_vehicle, owner, eVehicleStatus.UnderRepair);
+            AllCarsInTheGarage.Add(i_vehicle.LicenseID, vehicle);
         }
     }
 }

@@ -1,19 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="View.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The view.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
+    using System;
+    using System.Threading;
+
+    /// <summary>
+    /// The view.
+    /// </summary>
     public class View
     {
+        /// <summary>
+        /// The k_ invalid input msg.
+        /// </summary>
         public const string k_InvalidInputMsg = "Sorry, that's an invalid input";
 
         /*
          * Gets a valid menu selection
          */
+
+        /// <summary>
+        /// The menu scan.
+        /// </summary>
+        /// <param name="i_MsgToUser">
+        /// The i_ msg to user.
+        /// </param>
+        /// <param name="i_NumOfMenuOptions">
+        /// The i_ num of menu options.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public static int MenuScan(string i_MsgToUser, int i_NumOfMenuOptions)
         {
             string userInput;
@@ -40,6 +64,16 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
         /*
          * Scan general input
          */
+
+        /// <summary>
+        /// The number scan.
+        /// </summary>
+        /// <param name="i_ScanMsg">
+        /// The i_ scan msg.
+        /// </param>
+        /// <returns>
+        /// The <see cref="float"/>.
+        /// </returns>
         public static float NumberScan(string i_ScanMsg)
         {
             string userInput;
@@ -65,6 +99,16 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
         /*
          * Scan general input
          */
+
+        /// <summary>
+        /// The general scan.
+        /// </summary>
+        /// <param name="i_ScanMsg">
+        /// The i_ scan msg.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         public static string GeneralScan(string i_ScanMsg)
         {
             string input;
@@ -83,6 +127,12 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             return input;
         }
 
+        /// <summary>
+        /// The print invalid input.
+        /// </summary>
+        /// <param name="i_InvalidMsg">
+        /// The i_ invalid msg.
+        /// </param>
         public static void PrintInvalidInput(string i_InvalidMsg)
         {
             Console.WriteLine(i_InvalidMsg);

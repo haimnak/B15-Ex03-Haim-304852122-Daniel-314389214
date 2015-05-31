@@ -1,14 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ElectricCar.cs" company="">
-//   
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
-    using System.Collections.Generic;
-    
-
     public class ElectricCar : Car
     {
         private readonly Electric m_Electric;
@@ -61,7 +52,5 @@ namespace Ex03.GarageLogic
         {
             return string.Format("{0}, Num Of Doors: {1}, Color: {2}", base.ToString(), m_NumOfDoors, m_Color);
         }
-         
     }
 }
-
