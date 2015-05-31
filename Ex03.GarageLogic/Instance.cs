@@ -99,7 +99,15 @@ namespace Ex03.GarageLogic
 
         private static void instantiateGasMotorcycle()
         {
-            throw new NotImplementedException();
+            m_Vehicle = new GasMotorcycle(
+                        (eLicenseType)m_VehicleDetails["licenseType"],
+                        (int)m_VehicleDetails["engineCapacity"]);
+            m_Vehicle.Engine = new Fuel(m_Energy, GlobalProperties.k_MaxEnergyGasCar, GlobalProperties.k_FuelTypeCar);
+            m_Vehicle.Tires = CreateTires(
+            (string)m_VehicleDetails["TireManufacturer"],
+            (float)m_VehicleDetails["TireAirPressure"],
+            GlobalProperties.k_MaxAirPressureGasMotorCycle,
+            GlobalProperties.k_NumOfTiresMotorCycle);
         }
 
         private static void instantiateGasCar()
@@ -117,7 +125,15 @@ namespace Ex03.GarageLogic
 
         private static void instantiateElectricMotorcycle()
         {
-            throw new NotImplementedException();
+            m_Vehicle = new ElectricMotorcycle(
+                        (eLicenseType)m_VehicleDetails["licenseType"],
+                        (int)m_VehicleDetails["engineCapacity"]);
+            m_Vehicle.Engine = new Electric(m_Energy, GlobalProperties.k_MaxAirPressureElectricMotorCycle);
+            m_Vehicle.Tires = CreateTires(
+            (string)m_VehicleDetails["TireManufacturer"],
+            (float)m_VehicleDetails["TireAirPressure"],
+            GlobalProperties.k_MaxAirPressureElectricMotorCycle,
+            GlobalProperties.k_NumOfTiresMotorCycle);
         }
 
         private static void instantiateElectricCar()
