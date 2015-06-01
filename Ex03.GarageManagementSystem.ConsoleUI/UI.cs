@@ -54,7 +54,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
         {
             eMainMenu menuSelection = this.ShowMainMenu();
 
-            while (menuSelection != eMainMenu.Exit)
+            if (menuSelection != eMainMenu.Exit)
             {
                 try
                 {

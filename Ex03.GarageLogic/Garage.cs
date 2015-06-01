@@ -78,56 +78,39 @@
             return null;
         }
 
-<<<<<<< HEAD
 
-        public void refuelVehicle(string licenseId, eFuelType fuelType, float amount)
-=======
-        public bool refuelVehicle(string licenseId, eFuelType fuelType, float amount)
->>>>>>> 320bde0626c971e1d40d6c91d4a50a672e892724
+public void refuelVehicle(string licenseId, eFuelType fuelType, float amount)
         {
             
             if (thisCarInTheGarage(licenseId))
             {
                 VehicleInGarage vehicleInGarage;
                 AllCarsInTheGarage.TryGetValue(licenseId, out vehicleInGarage);
-                if (vehicleInGarage != null)
+                Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
+                if (fuelEngine != null)
                 {
-<<<<<<< HEAD
                     try
                     {
                         fuelEngine.FuelUp(fuelType, amount);
-=======
-                    Fuel fuelEngine = vehicleInGarage.vehicle.Engine as Fuel;
-                    if (fuelEngine != null)
-                    {
-                        if (fuelEngine.FuelUp(fuelType, amount))
-                        {
-                            success = true;
-                        }
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Impossible fuel this vechicle type");
->>>>>>> 320bde0626c971e1d40d6c91d4a50a672e892724
                     }
                     catch (Exception exception)
                     {
 
-                        throw new ArgumentException("Invalid fuel type");
+                        throw new ArgumentException(exception.Message);
                     }
 
                 }
+                else
+                {
+                    throw new ArgumentException("Impossible fuel this vechicle type");
+                }
+
             }
             else
             {
                 throw new ArgumentException("car not in the garage");
             }
-<<<<<<< HEAD
             
-=======
-
-            return success;
->>>>>>> 320bde0626c971e1d40d6c91d4a50a672e892724
         }
 
         public bool RechargeVehicle(string licenseId, float amount)
@@ -219,18 +202,6 @@
             return licenses;
         }
 
-        /// <summary>
-        /// The insert vehicle.
-        /// </summary>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        /// <param name="phoneNumber">
-        /// The phone number.
-        /// </param>
-        /// <param name="i_vehicle">
-        /// The i_vehicle.
-        /// </param>
         public void InsertVehicle(string name, string phoneNumber, Vehicle i_vehicle)
         {
             OwnerDetails owner = new OwnerDetails(name, phoneNumber);
